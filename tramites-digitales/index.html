@@ -1,992 +1,369 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trámites Digitales · logiu</title>
-<meta name="description" content="Conocé el portal de trámites municipales en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
 <meta property="og:title" content="Trámites Digitales · logiu">
-<meta property="og:description" content="Conocé el portal de trámites municipales en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
+<meta property="og:description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://logiu.com.ar/tramites-digitales">
+<link rel="icon" href="icono.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #07080F; --ink: #EDEEF5; --muted: #9BA0B4; --dim: #565B70;
-  --acc: #C6FF4A; --line: rgba(237,238,245,0.1); --card: rgba(237,238,245,0.025);
-  --ciudadania: #C6FF4A; --operacion: #6AD8FF; --control: #C99BFF;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
-body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg); color: var(--ink); overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; }
-h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.01em; }
-
-/* ---------- nav ---------- */
-.nav {
-  position: fixed; inset: 0 0 auto; z-index: 50; display: flex; gap: 24px;
-  align-items: center; justify-content: space-between; padding: 18px 48px;
-  background: linear-gradient(to bottom, rgba(7,8,15,0.9), rgba(7,8,15,0));
-  backdrop-filter: blur(8px);
-}
-.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-.brand span { font-weight: 600; font-size: 17px; letter-spacing: 1px; }
-.brand small { color: var(--dim); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
-.nav-links a:hover { color: var(--ink); }
-.btn-acc {
-  background: var(--acc); color: #07080F !important; text-decoration: none;
-  font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px;
-  transition: transform .2s, box-shadow .2s; display: inline-block;
-}
-.btn-acc:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(198,255,74,0.35); }
-.btn-ghost {
-  border: 1px solid rgba(237,238,245,0.25); color: var(--ink); text-decoration: none;
-  font-weight: 500; font-size: 15px; padding: 15px 34px; border-radius: 999px;
-  transition: border-color .2s; display: inline-block;
-}
-.btn-ghost:hover { border-color: var(--acc); }
-
-/* ---------- layout ---------- */
-.sec { max-width: 1240px; margin: 0 auto; padding: 110px 48px; }
-.sec + .sec { padding-top: 0; }
-.sec-head {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap; margin-bottom: 52px;
-}
-.sec-head > div { flex: 1 1 640px; }
-.sec-head h2 { font-size: clamp(30px, 4vw, 48px); }
-.sec-bajada { color: var(--muted); font-size: 16.5px; font-weight: 300; margin-top: 12px; max-width: 620px; line-height: 1.65; }
-.sec-label { color: var(--dim); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
-
-/* ---------- hero ---------- */
-.hero {
-  position: relative; padding: 168px 48px 0; text-align: center;
-  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(198,255,74,0.09), transparent 70%);
-}
-.pill {
-  display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(198,255,74,0.35);
-  color: var(--acc); font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  padding: 8px 18px; border-radius: 999px;
-}
-.hero h1 {
-  font-weight: 800; font-size: clamp(40px, 7vw, 92px); line-height: 1.03;
-  margin: 28px auto 24px; max-width: 14ch; letter-spacing: -1px;
-}
-.hero h1 em { font-style: normal; color: var(--acc); text-shadow: 0 0 40px rgba(198,255,74,0.4); }
-.hero-bajada { max-width: 620px; margin: 0 auto 36px; color: var(--muted); font-size: 18px; line-height: 1.7; font-weight: 300; text-wrap: pretty; }
-.hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-/* ---------- mockup ---------- */
-.marco {
-  border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
-  background: #0D0F1A; box-shadow: 0 40px 90px rgba(0,0,0,0.55);
-}
-.marco-barra { display: flex; gap: 7px; padding: 11px 14px; border-bottom: 1px solid var(--line); }
-.marco-barra i { width: 9px; height: 9px; border-radius: 50%; background: rgba(237,238,245,0.18); }
-.marco img { display: block; width: 100%; height: auto; }
-.hero-shot { max-width: 1000px; margin: 64px auto 0; padding: 0 0 8px; }
-
-/* ---------- cifras ---------- */
-.cifras {
-  max-width: 1240px; margin: 0 auto; padding: 56px 48px 0;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-}
-.cifra { text-align: center; }
-.cifra-num { font-weight: 800; font-size: clamp(38px, 5vw, 56px); line-height: 1; color: var(--acc); }
-.cifra-lbl { margin-top: 10px; color: var(--muted); font-size: 13.5px; font-weight: 300; }
-.cifras-nota { max-width: 1240px; margin: 28px auto 0; padding: 0 48px; text-align: center; color: var(--dim); font-size: 12.5px; }
-
-/* ---------- funcionalidades ---------- */
-.feats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.feats-sm { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
-.feat {
-  border: 1px solid var(--line); border-radius: 16px; padding: 28px;
-  background: var(--card); transition: border-color .25s, background .25s, transform .25s;
-}
-.feat:hover { border-color: rgba(198,255,74,0.35); background: rgba(198,255,74,0.05); transform: translateY(-3px); }
-.feat-xl { padding: 36px; }
-.feat-xl h3 { font-size: 22px; }
-.feat h3 { font-size: 17.5px; margin: 14px 0 9px; }
-.feat p { color: var(--muted); font-size: 14.5px; line-height: 1.6; font-weight: 300; }
-.feat-fam {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
-  border: 1px solid; padding: 5px 12px; border-radius: 999px; display: inline-block;
-}
-.fam-ciudadania .feat-fam { color: var(--ciudadania); border-color: rgba(198,255,74,0.35); }
-.fam-operacion  .feat-fam { color: var(--operacion);  border-color: rgba(106,216,255,0.35); }
-.fam-control    .feat-fam { color: var(--control);    border-color: rgba(201,155,255,0.35); }
-
-/* ---------- flujo ---------- */
-.pasos { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-.paso { padding: 28px 22px; border-top: 2px solid var(--line); transition: border-color .25s; }
-.paso:hover { border-color: var(--acc); }
-.paso-num { color: var(--acc); font-size: 13px; letter-spacing: 2px; font-weight: 600; }
-.paso h3 { font-size: 16.5px; margin: 12px 0 8px; }
-.paso p { color: var(--muted); font-size: 14px; line-height: 1.55; font-weight: 300; }
-
-/* ---------- galería ---------- */
-.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
-.tab {
-  font-family: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer;
-  background: transparent; color: var(--muted); border: 1px solid var(--line);
-  padding: 10px 22px; border-radius: 999px; transition: all .2s;
-}
-.tab:hover { color: var(--ink); border-color: rgba(237,238,245,0.3); }
-.tab.is-on { background: var(--acc); border-color: var(--acc); color: #07080F; font-weight: 600; }
-.shot { display: none; }
-.shot.is-on { display: block; }
-.shot figcaption { margin: 18px auto 0; max-width: 780px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.6; font-weight: 300; }
-
-/* ---------- data sheet ---------- */
-.ds-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 44px; }
-.ds-meta div { border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; background: var(--card); }
-.ds-meta dt { color: var(--dim); font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; }
-.ds-meta dd { margin-top: 7px; font-size: 15.5px; font-weight: 500; }
-.ds-meta dd small { display: block; margin-top: 7px; color: var(--muted); font-size: 13px; font-weight: 300; line-height: 1.5; }
-.ds-sub { margin-top: 68px; }
-.ds-sub > h3 {
-  font-size: clamp(22px, 2.6vw, 30px); display: flex; align-items: baseline; gap: 12px;
-}
-.ds-sub > h3 b { color: var(--acc); font-weight: 800; }
-.ds-sub > p { color: var(--muted); font-size: 15.5px; line-height: 1.65; font-weight: 300; max-width: 760px; margin-top: 12px; }
-.tabla-wrap { overflow-x: auto; margin-top: 28px; border: 1px solid var(--line); border-radius: 14px; }
-table { border-collapse: collapse; width: 100%; min-width: 720px; text-align: left; }
-thead th {
-  color: var(--dim); font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase;
-  font-weight: 600; padding: 15px 18px; border-bottom: 1px solid var(--line); white-space: nowrap;
-}
-tbody th, tbody td { padding: 15px 18px; border-bottom: 1px solid rgba(237,238,245,0.06); vertical-align: top; }
-tbody th { font-weight: 500; font-size: 14.5px; }
-tbody td { color: var(--muted); font-size: 14px; line-height: 1.55; font-weight: 300; }
-tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
-.perms code { display: inline-block; font-size: 11.5px; color: var(--acc); background: rgba(198,255,74,0.08); border-radius: 5px; padding: 3px 7px; margin: 0 4px 4px 0; }
-.perm-none { font-size: 13px; font-style: italic; }
-.nowrap-sm { white-space: nowrap; }
-.t-modulos th:nth-child(1) { width: 15%; }
-.t-modulos th:nth-child(2) { width: 42%; }
-.t-modulos th:nth-child(3) { width: 21%; }
-.t-modulos th:nth-child(4) { width: 22%; }
-
-.roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px; }
-.rol { border: 1px solid var(--line); border-radius: 16px; padding: 28px; background: var(--card); }
-.rol h4 { font-size: 19px; color: var(--acc); }
-.rol header p { color: var(--muted); font-size: 14px; line-height: 1.55; font-weight: 300; margin-top: 8px; }
-.rol ol { margin: 20px 0 0 18px; display: grid; gap: 10px; }
-.rol li { color: var(--muted); font-size: 14px; line-height: 1.55; font-weight: 300; padding-left: 4px; }
-.rol li::marker { color: var(--acc); font-size: 12px; font-weight: 600; }
-
-.matriz { min-width: 860px; }
-.matriz tbody th { width: 46%; }
-.matriz tbody th span { display: block; font-weight: 400; font-size: 13.5px; color: var(--ink); line-height: 1.45; }
-.matriz tbody th code { display: block; margin-top: 3px; font-size: 11px; color: var(--dim); }
-.matriz td { text-align: center; }
-.matriz td.si { color: var(--acc); font-weight: 700; }
-.matriz td.no { color: rgba(86,91,112,0.7); }
-.matriz tr.grupo th {
-  background: rgba(237,238,245,0.04); color: var(--ink); font-size: 12px;
-  letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 11px 18px;
-}
-.leyenda { display: flex; gap: 22px; flex-wrap: wrap; list-style: none; margin-top: 20px; color: var(--muted); font-size: 13px; font-weight: 300; }
-.leyenda b { color: var(--acc); }
-.nota { margin-top: 18px; color: var(--dim); font-size: 13px; line-height: 1.6; font-weight: 300; max-width: 820px; }
-
-/* ---------- cierre ---------- */
-.cta {
-  text-align: center; padding: 120px 48px; border-top: 1px solid rgba(237,238,245,0.08);
-  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(198,255,74,0.1), transparent);
-}
-.cta h2 { font-weight: 800; font-size: clamp(32px, 5.5vw, 72px); margin: 18px 0 30px; line-height: 1.06; }
-.cta h2 em { font-style: normal; color: var(--acc); }
-.cta .btn-acc { font-size: 17px; padding: 19px 46px; }
-footer {
-  display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
-  padding: 34px 48px; border-top: 1px solid rgba(237,238,245,0.08); color: var(--dim); font-size: 13px; font-weight: 300;
-}
-footer a { color: var(--muted); text-decoration: none; }
-footer a:hover { color: var(--acc); }
-
-/* ---------- responsive ---------- */
-@media (max-width: 1080px) {
-  .feats-sm { grid-template-columns: repeat(2, 1fr); }
-  .pasos { grid-template-columns: repeat(2, 1fr); }
-  .roles, .ds-meta { grid-template-columns: 1fr; }
-}
-@media (max-width: 860px) {
-  .nav { padding: 14px 20px; }
-  .nav-links a:not(.btn-acc) { display: none; }
-  .sec { padding: 76px 20px; }
-  .hero { padding: 132px 20px 0; }
-  .cifras { grid-template-columns: repeat(2, 1fr); gap: 32px 18px; padding: 44px 20px 0; }
-  .cifras-nota, .cta, footer { padding-left: 20px; padding-right: 20px; }
-  .feats, .feats-sm, .pasos { grid-template-columns: 1fr; }
-  .brand small { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="landing h-full palette-teal"
+       
+        data-action="turbo:submit-start@document->
+submit-guard#disable turbo:submit-end@document->submit-guard#enable">
+    <!-- BEGIN app/views/pages/caracteristicas.html.erb
+-->
+<div class="w-full overflow-x-hidden">
 
-<nav class="nav">
-  <a class="brand" href="/">
-    <svg width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M20 3 L36 12 L36 28 L20 37 L4 28 L4 12 Z" stroke="#C6FF4A" stroke-width="2.2" fill="none"></path>
-      <path d="M14 12 L14 26 L27 26" stroke="#EDEEF5" stroke-width="3.2" stroke-linecap="square" fill="none"></path>
-      <circle cx="27" cy="26" r="2.6" fill="#C6FF4A"></circle>
-    </svg>
-    <span>logiu</span>
-    <small>/ Trámites Digitales</small>
-  </a>
-  <div class="nav-links">
-    <a href="#funcionalidades">Funcionalidades</a>
-    <a href="#flujo">Cómo funciona</a>
-    <a href="#capturas">Capturas</a>
-    <a href="#data-sheet">Data sheet</a>
-    <a class="btn-acc" href="mailto:hola@logiu.com.ar?subject=Tr%C3%A1mites%20Digitales">Hablemos</a>
-  </div>
-</nav>
+  <!-- BEGIN app/views/pages/_caracteristicas_nav.html.erb
+--><header class="sticky top-0 z-50 border-b border-[var(--l-200)] bg-white/90 backdrop-blur-md backdrop-saturate-150 print:hidden">
+  <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-[11px] sm:px-6">
+    <span class="flex items-center gap-2.5">
+      <span class="flex h-9 w-9 items-center justify-center rounded-[10px] bg-marca text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10.5L12 4l8 6.5" /><path d="M5 10.5h14" /><path d="M6 10.5V18" /><path d="M10 10.5V18" /><path d="M14 10.5V18" /><path d="M18 10.5V18" /><path d="M4 18h16" /><path d="M3 21h18" /></svg></span>
+      <span class="font-display text-[16px] font-bold text-ink">Trámites Digitales</span>
+    </span>
 
-<header class="hero">
-  <span class="pill">Qué hace el sistema</span>
-  <h1>Todo el trámite, <em>en línea</em></h1>
-  <p class="hero-bajada">Una plataforma para que los vecinos hagan sus gestiones sin filas y el municipio las atienda con seguimiento de principio a fin.</p>
-  <div class="hero-cta">
-    <a class="btn-acc" href="#capturas">Velo funcionando</a>
-    <a class="btn-ghost" href="#data-sheet">Ver el data sheet</a>
-  </div>
-  <div class="hero-shot">
-    <div class="marco">
-      <span class="marco-barra"><i></i><i></i><i></i></span>
-      <img src="capturas/bandeja.png" alt="Captura de la plataforma: Bandeja"
-           width="1440" height="900" fetchpriority="high" decoding="async">
-    </div>
+    <nav class="flex items-center gap-1 rounded-full border border-[var(--l-200)] bg-[var(--l-50)] p-1"
+         aria-label="Secciones de la presentación">
+        <a class="rounded-full px-4 py-1.5 text-[13.5px] font-semibold transition-colors bg-marca text-white shadow-sm" aria-current="page" href="./">Funcionalidades</a>
+        <a class="rounded-full px-4 py-1.5 text-[13.5px] font-semibold transition-colors text-[#5a6b82] hover:text-ink" href="data-sheet/">Data sheet</a>
+    </nav>
   </div>
 </header>
+<!-- END app/views/pages/_caracteristicas_nav.html.erb -->
 
-<section class="cifras" aria-label="El sistema, en números">
-  <div class="cifra"><p class="cifra-num">14</p><p class="cifra-lbl">módulos en producción</p></div>
-        <div class="cifra"><p class="cifra-num">75</p><p class="cifra-lbl">permisos configurables</p></div>
-        <div class="cifra"><p class="cifra-num">5</p><p class="cifra-lbl">roles internos de base</p></div>
-        <div class="cifra"><p class="cifra-num">4</p><p class="cifra-lbl">niveles de verificación</p></div>
-</section>
-<p class="cifras-nota">Cifras tomadas de la definición vigente del sistema, no de un folleto.</p>
+  <section class="hero-oscuro relative overflow-hidden bg-[var(--l-dark)]">
+    <div class="hero-malla pointer-events-none absolute inset-0"></div>
+    <div class="hero-blob pointer-events-none absolute -right-[6%] top-[4%] h-[420px] w-[420px] rounded-full"></div>
 
-<section class="sec" id="funcionalidades">
-  <div class="sec-head">
-  <div>
-    <h2>De la solicitud a la resolución</h2>
-    <p class="sec-bajada">El portal cubre todo el ciclo del trámite. Estos son los módulos que operan hoy.</p>
-  </div>
-  <span class="sec-label">01 — Funcionalidades</span>
-</div>
+    <div class="relative mx-auto max-w-[1200px] px-6 pb-0 pt-[72px]">
+      <div class="mx-auto max-w-[760px] text-center" data-controller="reveal" data-reveal-stagger-value="90">
+        <span data-reveal-item class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[12.5px] font-bold uppercase tracking-[0.12em] text-[var(--l-ondark)]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 14l4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg> Qué hace el sistema
+        </span>
+        <h1 data-reveal-item class="mt-6 font-display text-[42px] font-extrabold leading-[1.02] tracking-[-0.03em] text-white sm:text-[58px]">
+          Todo el trámite,
+          <span class="hero-destacado">en línea</span>
+        </h1>
+        <p data-reveal-item class="mx-auto mt-5 max-w-[600px] text-[17px] leading-[1.55] text-[var(--l-ondark)] sm:text-[19px]">Una plataforma para que los vecinos hagan sus gestiones sin filas y el municipio las atienda con seguimiento de principio a fin.</p>
+        <div data-reveal-item class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a class="btn-brillo inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[14.5px] font-bold text-[var(--l-dark)]" href="data-sheet/">
+            Ver el data sheet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13" /><path d="M13 6l6 6-6 6" /></svg>
+</a>          <a href="#galeria" class="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-[14.5px] font-bold text-white transition hover:bg-white/10">
+            Velo funcionando
+          </a>
+        </div>
+      </div>
 
-  <div class="feats"><article class="feat feat-xl fam-ciudadania">
-  <span class="feat-fam">Para el vecino</span>
-  <h3>Solicitudes en línea</h3>
-  <p>El vecino elige el trámite, completa el formulario y adjunta la documentación desde cualquier dispositivo.</p>
-</article>
-<article class="feat feat-xl fam-ciudadania">
-  <span class="feat-fam">Para el vecino</span>
-  <h3>Seguimiento por estados</h3>
-  <p>Cada trámite tiene su propio camino y el vecino ve en qué punto está en todo momento.</p>
-</article>
-</div>
-  <div class="feats feats-sm"><article class="feat fam-operacion">
-  <span class="feat-fam">Para el municipio</span>
-  <h3>Bandeja del personal</h3>
-  <p>Los agentes filtran, toman y resuelven las solicitudes con turnos de atención por estado.</p>
-</article>
-<article class="feat fam-operacion">
-  <span class="feat-fam">Para el municipio</span>
-  <h3>Mensajería del trámite</h3>
-  <p>Las consultas y respuestas quedan adjuntas al expediente, con aviso dentro del portal.</p>
-</article>
-<article class="feat fam-operacion">
-  <span class="feat-fam">Para el municipio</span>
-  <h3>Dashboard en vivo</h3>
-  <p>Contadores de bandeja y solicitudes sin leer se actualizan en tiempo real, sin recargar la página.</p>
-</article>
-<article class="feat fam-ciudadania">
-  <span class="feat-fam">Para el vecino</span>
-  <h3>Notificaciones</h3>
-  <p>Cada cambio de estado se avisa por correo y dentro del portal: no hace falta volver a preguntar.</p>
-</article>
-<article class="feat fam-control">
-  <span class="feat-fam">Para el control</span>
-  <h3>Verificación con QR</h3>
-  <p>Los documentos emitidos llevan un código QR que permite validar su vigencia al instante.</p>
-</article>
-<article class="feat fam-control">
-  <span class="feat-fam">Para el control</span>
-  <h3>Auditoría completa</h3>
-  <p>Cada acción queda registrada en una bitácora de solo lectura, en línea con la Ley 25.326.</p>
-</article>
-</div>
-</section>
-
-<section class="sec" id="flujo">
-  <div class="sec-head">
-  <div>
-    <h2>Así avanza un trámite</h2>
-    <p class="sec-bajada">Del formulario a la resolución, cada paso queda registrado.</p>
-  </div>
-  <span class="sec-label">02 — Cómo funciona</span>
-</div>
-
-  <ol class="pasos"><li class="paso">
-  <span class="paso-num">01</span>
-  <h3>Elegí el trámite</h3>
-  <p>El vecino lo busca en el catálogo y lo abre.</p>
-</li>
-<li class="paso">
-  <span class="paso-num">02</span>
-  <h3>Completá el formulario</h3>
-  <p>Carga los datos y adjunta la documentación requerida.</p>
-</li>
-<li class="paso">
-  <span class="paso-num">03</span>
-  <h3>El municipio lo toma</h3>
-  <p>La solicitud entra a la bandeja y un agente la toma.</p>
-</li>
-<li class="paso">
-  <span class="paso-num">04</span>
-  <h3>Movimientos y respuestas</h3>
-  <p>Verificaciones, respuestas y consultas se agregan al expediente.</p>
-</li>
-<li class="paso">
-  <span class="paso-num">05</span>
-  <h3>Resolución y aviso</h3>
-  <p>El trámite se resuelve y el vecino recibe la notificación.</p>
-</li>
-</ol>
-</section>
-
-<section class="sec" id="capturas">
-  <div class="sec-head">
-  <div>
-    <h2>No es una maqueta</h2>
-    <p class="sec-bajada">Pantallas reales de la plataforma. Los datos que se ven son ficticios; el software es el que se instala.</p>
-  </div>
-  <span class="sec-label">03 — Velo funcionando</span>
-</div>
-
-  <div class="tabs" role="tablist">
-    <button type="button" class="tab is-on" data-tab="bandeja">Bandeja</button>
-          <button type="button" class="tab" data-tab="estadisticas">Estadísticas</button>
-          <button type="button" class="tab" data-tab="dashboard">Tablero</button>
-  </div>
-  <figure class="shot is-on" data-panel="bandeja">
-  <div class="marco">
-    <span class="marco-barra"><i></i><i></i><i></i></span>
-    <img src="capturas/bandeja.png" alt="Captura de la plataforma: Bandeja"
-         width="1440" height="900" loading="lazy" decoding="async">
-  </div>
-  <figcaption>La cola de trabajo del área: pestañas con el conteo en vivo, filtros por trámite, estado y agente, y el botón para tomar una solicitud.</figcaption>
-</figure>
-<figure class="shot" data-panel="estadisticas">
-  <div class="marco">
-    <span class="marco-barra"><i></i><i></i><i></i></span>
-    <img src="capturas/estadisticas.png" alt="Captura de la plataforma: Estadísticas"
-         width="1440" height="900" loading="lazy" decoding="async">
-  </div>
-  <figcaption>Volumen, solicitudes en curso, cerradas y días promedio de cierre, con gráficos por estado y por trámite, exportables a PDF y CSV.</figcaption>
-</figure>
-<figure class="shot" data-panel="dashboard">
-  <div class="marco">
-    <span class="marco-barra"><i></i><i></i><i></i></span>
-    <img src="capturas/dashboard.png" alt="Captura de la plataforma: Tablero"
-         width="1440" height="900" loading="lazy" decoding="async">
-  </div>
-  <figcaption>El tablero del agente al entrar: lo que tiene sin atender, lo que está trabajando y los contadores por área y por trámite, actualizados en vivo.</figcaption>
-</figure>
-
-</section>
-
-<section class="sec" id="data-sheet">
-  <div class="sec-head">
-  <div>
-    <h2>Data sheet de la plataforma</h2>
-    <p class="sec-bajada">Descripción funcional y técnica del sistema de trámites municipales en línea: módulos que lo componen, procedimientos de uso por rol y matriz completa de permisos. Redactado para acompañar un expediente administrativo o una sesión de concejo deliberante.</p>
-  </div>
-  <span class="sec-label">04 — Documento técnico</span>
-</div>
-
-
-  <dl class="ds-meta">
-    <div><dt>Versión del documento</dt><dd>1.0</dd></div>
-    <div><dt>Generado el</dt><dd>15 de septiembre de 2026</dd></div>
-    <div><dt>Alcance</dt><dd>Instalación municipal única<small>Cada municipio opera su propia instancia, con su propia base de datos. No hay datos compartidos entre municipios.</small></dd></div>
-  </dl>
-
-  <div class="ds-sub">
-    <h3><b>1.</b> Catálogo de módulos</h3>
-    <p>Cada módulo del sistema, qué problema administrativo resuelve, qué rol lo opera habitualmente y qué permisos exige para funcionar.</p>
-    <div class="tabla-wrap">
-      <table class="t-modulos">
-        <thead><tr>
-          <th scope="col">Módulo</th>
-          <th scope="col">Qué resuelve</th>
-          <th scope="col">Quién lo opera</th>
-          <th scope="col">Permisos que exige</th>
-        </tr></thead>
-        <tbody><tr>
-  <th scope="row">Solicitudes en línea</th>
-  <td>El vecino inicia su gestión desde cualquier dispositivo: elige el trámite del catálogo, completa el formulario y adjunta la documentación. Cada solicitud recibe un número propio y queda registrada con fecha y hora.</td>
-  <td>Vecino · Agente (carga asistida en mesa de entradas)</td>
-  <td class="perms"><code>crear-solicitudes</code> <code>ver-solicitudes</code></td>
-</tr>
-<tr>
-  <th scope="row">Bandeja y turnos de atención</th>
-  <td>Las solicitudes entrantes se agrupan por estado y por área. El agente filtra, toma una solicitud y queda como responsable, lo que evita que dos personas trabajen el mismo expediente.</td>
-  <td>Agente · Supervisor</td>
-  <td class="perms"><code>panel-agente</code> <code>atender-solicitudes</code></td>
-</tr>
-<tr>
-  <th scope="row">Movimientos y expediente</th>
-  <td>Cada intervención sobre la solicitud (verificación, pedido de documentación, nota interna, respuesta al vecino) se asienta como un movimiento fechado y firmado por su autor. El conjunto forma el expediente digital del trámite.</td>
-  <td>Agente · Supervisor</td>
-  <td class="perms"><code>ver-solicitud-tramite</code> <code>editar-solicitudes</code> <code>finalizar-solicitud</code></td>
-</tr>
-<tr>
-  <th scope="row">Formularios versionados</th>
-  <td>El municipio define los campos de cada trámite sin programar. Al publicar una modificación se crea una versión nueva: las solicitudes ya iniciadas conservan el formulario con el que fueron presentadas, tal como exige la validez del acto administrativo.</td>
-  <td>Administrador · Supervisor</td>
-  <td class="perms"><code>ver-formularios</code> <code>crear-formularios</code> <code>editar-formularios</code> <code>publicar-formularios</code></td>
-</tr>
-<tr>
-  <th scope="row">Trámites y estados</th>
-  <td>Cada trámite define su propio circuito: qué acciones existen, en qué orden, qué estado deja cada una y qué nivel de verificación exige del vecino. No hay un flujo único impuesto a todos los trámites.</td>
-  <td>Administrador · Supervisor</td>
-  <td class="perms"><code>ver-tramites</code> <code>crear-tramites</code> <code>editar-tramites</code> <code>ver-acciones</code> <code>crear-acciones</code></td>
-</tr>
-<tr>
-  <th scope="row">Áreas y derivación</th>
-  <td>Refleja el organigrama municipal. Una solicitud puede derivarse de un área a otra dejando constancia del movimiento, y cada agente ve la bandeja de las áreas a las que pertenece.</td>
-  <td>Administrador · Supervisor</td>
-  <td class="perms"><code>ver-areas</code> <code>crear-areas</code> <code>asignar-areas</code> <code>mover-area</code></td>
-</tr>
-<tr>
-  <th scope="row">Padrón de personas</th>
-  <td>Registro único de vecinos y personas jurídicas. Concentra los datos identificatorios para no volver a pedirlos en cada trámite. El DNI y sus imágenes son datos sensibles y requieren un permiso específico para verse.</td>
-  <td>Agente · Supervisor</td>
-  <td class="perms"><code>ver-persona</code> <code>crear-persona</code> <code>editar-persona</code> <code>ver-dni</code></td>
-</tr>
-<tr>
-  <th scope="row">Usuarios internos</th>
-  <td>Alta, baja y modificación del personal municipal que opera el sistema, con asignación de roles y de áreas. Las bajas van a una papelera recuperable, no se borran.</td>
-  <td>Administrador · Supervisor</td>
-  <td class="perms"><code>ver-usuario</code> <code>crear-usuario</code> <code>editar-usuario</code> <code>borrar-usuario</code></td>
-</tr>
-<tr>
-  <th scope="row">Roles y permisos</th>
-  <td>El municipio puede crear roles propios además de los del sistema y componerlos permiso por permiso, sin intervención del proveedor. La sección 3 de este documento lista el vocabulario completo.</td>
-  <td>Administrador</td>
-  <td class="perms"><code>ver-rol</code> <code>crear-rol</code> <code>editar-rol</code> <code>borrar-rol</code></td>
-</tr>
-<tr>
-  <th scope="row">Verificación pública por QR</th>
-  <td>Los documentos emitidos llevan un código QR. Quien lo escanea —otro organismo, un comercio, un inspector— ve si el trámite está vigente sin necesidad de cuenta y sin acceder a ningún dato personal del vecino.</td>
-  <td>Público general (sin cuenta)</td>
-  <td class="perms"><span class="perm-none">Ninguno: acceso público sin autenticación</span></td>
-</tr>
-<tr>
-  <th scope="row">Notificaciones y mensajería</th>
-  <td>Cada cambio de estado se avisa por correo electrónico y dentro del portal. Las consultas del vecino y las respuestas del municipio quedan adjuntas al expediente, no en canales informales.</td>
-  <td>Sistema · Agente · Vecino</td>
-  <td class="perms"><code>mensajes-generales</code></td>
-</tr>
-<tr>
-  <th scope="row">Bitácora de auditoría</th>
-  <td>Registro de solo lectura de las acciones relevantes: quién hizo qué, sobre qué objeto, desde qué dirección IP y en qué momento. No admite edición ni borrado desde la aplicación. Es el respaldo ante un pedido de informes o una auditoría.</td>
-  <td>Auditor</td>
-  <td class="perms"><code>ver-auditoria</code></td>
-</tr>
-<tr>
-  <th scope="row">Estadísticas e indicadores</th>
-  <td>Tableros con volumen de solicitudes, tiempos de resolución y carga por área, filtrables por período y exportables a PDF y CSV para adjuntar a un informe de gestión.</td>
-  <td>Supervisor · Auditor · Visualizador</td>
-  <td class="perms"><code>ver-reportes</code> <code>crear-reportes</code></td>
-</tr>
-<tr>
-  <th scope="row">Configuración institucional</th>
-  <td>Nombre del municipio, logo, colores, datos de contacto y textos legales del portal. Se administra desde la propia aplicación, sin tocar código ni requerir un despliegue.</td>
-  <td>Administrador</td>
-  <td class="perms"><code>ver-configuracion</code> <code>editar-configuracion</code></td>
-</tr>
-</tbody>
-      </table>
+      <div class="relative mx-auto mt-14 max-w-[1000px]" data-controller="reveal" data-hero-mockup>
+        <div data-reveal-item class="mockup-marco">
+          <span class="mockup-barra">
+            <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+          </span>
+          <img alt="Captura de la plataforma: Bandeja" class="block w-full" loading="eager" decoding="async" src="capturas/bandeja.png" />
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="ds-sub">
-    <h3><b>2.</b> Procedimientos por rol</h3>
-    <p>Secuencia operativa de cada rol sobre el sistema. Los pasos describen el circuito completo de un trámite, desde que el vecino lo inicia hasta que queda archivado y auditado.</p>
-    <div class="roles"><article class="rol">
-  <header>
-    <h4>Vecino</h4>
-    <p>Persona que inicia y sigue su propia gestión. No accede a la plataforma interna.</p>
-  </header>
-  <ol>
-    <li>Se registra en el portal con su correo electrónico y define una contraseña. Queda en Nivel 1.</li>
-          <li>Verifica su correo con el enlace que recibe. Pasa a Nivel 2, el mínimo para iniciar trámites.</li>
-          <li>Si el trámite lo exige, carga las fotos del frente y el dorso de su DNI desde su perfil; un agente valida los datos y lo promueve a Nivel 3.</li>
-          <li>Busca el trámite en el catálogo público, lo abre y lee los requisitos y la documentación que necesita.</li>
-          <li>Completa el formulario, adjunta la documentación y envía. El sistema le asigna un número de solicitud.</li>
-          <li>Sigue el avance desde su panel: ve el estado actual y el historial de movimientos, y recibe aviso por correo en cada cambio.</li>
-          <li>Responde los pedidos de documentación faltante y las consultas del municipio desde la misma solicitud.</li>
-          <li>Al resolverse, descarga el documento emitido. Si lleva QR, cualquiera puede verificar su vigencia escaneándolo.</li>
-  </ol>
-</article>
-<article class="rol">
-  <header>
-    <h4>Agente</h4>
-    <p>Personal que atiende y resuelve las solicitudes de su área.</p>
-  </header>
-  <ol>
-    <li>Ingresa a la plataforma con su usuario y accede al panel del agente.</li>
-          <li>Abre la bandeja de su área, filtrada por estado, trámite o antigüedad.</li>
-          <li>Toma una solicitud pendiente: queda registrado como responsable y la solicitud sale de la cola común.</li>
-          <li>Revisa el formulario presentado y la documentación adjunta contra los requisitos del trámite.</li>
-          <li>Si falta documentación, asienta un pedido al vecino; la solicitud queda a la espera de la respuesta.</li>
-          <li>Registra los movimientos que correspondan: verificaciones, notas internas y comunicaciones con el vecino.</li>
-          <li>Si el trámite excede su competencia, lo deriva al área correspondiente dejando constancia del movimiento.</li>
-          <li>Finaliza, rechaza o publica la solicitud según el resultado. El vecino recibe el aviso automáticamente.</li>
-  </ol>
-</article>
-<article class="rol">
-  <header>
-    <h4>Supervisor</h4>
-    <p>Responsable de un área o de la mesa de entradas. Además de atender, organiza el trabajo y define trámites.</p>
-  </header>
-  <ol>
-    <li>Revisa la carga de trabajo de su área y los tiempos de resolución en el tablero de estadísticas.</li>
-          <li>Reasigna solicitudes entre agentes cuando hay licencias, desbalanceo o vencimientos próximos.</li>
-          <li>Define o ajusta trámites: sus acciones, los estados que producen y el nivel de verificación que exigen.</li>
-          <li>Arma y publica los formularios de cada trámite. Al modificar uno publicado, el sistema genera una versión nueva y preserva las solicitudes en curso.</li>
-          <li>Administra las áreas del organigrama y qué agentes pertenecen a cada una.</li>
-          <li>Valida la identidad de los vecinos que cargaron su documentación y los promueve de nivel.</li>
-          <li>Revisa las solicitudes rechazadas y reactiva las que correspondan.</li>
-          <li>Exporta los informes de gestión del período en PDF o CSV.</li>
-  </ol>
-</article>
-<article class="rol">
-  <header>
-    <h4>Administrador</h4>
-    <p>Responsable funcional del sistema en el municipio. Tiene la totalidad de los permisos.</p>
-  </header>
-  <ol>
-    <li>Da de alta a los usuarios internos y les asigna rol y áreas.</li>
-          <li>Compone roles propios además de los del sistema, eligiendo permiso por permiso según el organigrama real del municipio.</li>
-          <li>Configura la identidad institucional del portal: nombre, logo, colores, datos de contacto y textos legales.</li>
-          <li>Administra el catálogo completo de temas, trámites, acciones y formularios.</li>
-          <li>Controla el acceso a datos sensibles: define qué roles pueden ver el DNI y sus imágenes.</li>
-          <li>Da de baja usuarios que dejan la función. La baja es recuperable y queda asentada en la bitácora.</li>
-          <li>Revisa periódicamente la bitácora de auditoría y los indicadores del sistema.</li>
-  </ol>
-</article>
-<article class="rol">
-  <header>
-    <h4>Auditor</h4>
-    <p>Control interno. Ve todo el sistema y no puede modificar nada: sus permisos son exclusivamente de lectura.</p>
-  </header>
-  <ol>
-    <li>Ingresa con su usuario, que no habilita ninguna acción de escritura.</li>
-          <li>Consulta la bitácora de auditoría filtrando por acción, tipo de objeto, usuario o período.</li>
-          <li>Verifica sobre un expediente concreto la secuencia completa de movimientos y quién intervino en cada una.</li>
-          <li>Revisa la configuración vigente de roles, permisos y trámites al momento de los hechos observados.</li>
-          <li>Consulta los indicadores de gestión y exporta el respaldo documental de sus observaciones.</li>
-  </ol>
-</article>
+  <section class="border-b border-[var(--l-200)] bg-white pt-[92px]">
+    <div class="mx-auto max-w-[1200px] px-6 pb-[52px]">
+      <div class="grid grid-cols-2 gap-6 lg:grid-cols-4" data-controller="reveal" data-reveal-stagger-value="80">
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-cifra="modulos"
+               data-controller="contador" data-contador-objetivo-value="14">14</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">módulos en producción</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-cifra="permisos"
+               data-controller="contador" data-contador-objetivo-value="75">75</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">permisos configurables</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-cifra="roles"
+               data-controller="contador" data-contador-objetivo-value="5">5</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">roles internos de base</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-cifra="niveles"
+               data-controller="contador" data-contador-objetivo-value="4">4</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">niveles de verificación</p>
+          </div>
+      </div>
+      <p class="mt-8 text-center text-[12.5px] text-[#8b97a8]">Cifras tomadas de la definición vigente del sistema, no de un folleto.</p>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]">
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Funcionalidades</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">De la solicitud a la resolución</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">El portal cubre todo el ciclo del trámite. Estos son los módulos que operan hoy.</p>
+      </div>
+
+      <div class="mt-11 grid grid-cols-1 gap-5 md:grid-cols-2" data-controller="reveal" data-reveal-stagger-value="110">
+          <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
+            <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg></span>
+            <span class="feature-familia">Para el vecino</span>
+            <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Solicitudes en línea</h3>
+            <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">El vecino elige el trámite, completa el formulario y adjunta la documentación desde cualquier dispositivo.</p>
+          </article>
+          <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
+            <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2 2 7l10 5 10-5z" /><path d="M2 12l10 5 10-5" /><path d="M2 17l10 5 10-5" /></svg></span>
+            <span class="feature-familia">Para el vecino</span>
+            <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Seguimiento por estados</h3>
+            <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">Cada trámite tiene su propio camino y el vecino ve en qué punto está en todo momento.</p>
+          </article>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" data-controller="reveal">
+          <article data-reveal-item class="feature-card familia-operacion">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 14l4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg></span>
+            <span class="feature-familia">Para el municipio</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Bandeja del personal</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Los agentes filtran, toman y resuelven las solicitudes con turnos de atención por estado.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-operacion">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></span>
+            <span class="feature-familia">Para el municipio</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Mensajería del trámite</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Las consultas y respuestas quedan adjuntas al expediente, con aviso dentro del portal.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-operacion">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg></span>
+            <span class="feature-familia">Para el municipio</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Dashboard en vivo</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Contadores de bandeja y solicitudes sin leer se actualizan en tiempo real, sin recargar la página.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-ciudadania">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></span>
+            <span class="feature-familia">Para el vecino</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Notificaciones</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Cada cambio de estado se avisa por correo y dentro del portal: no hace falta volver a preguntar.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-control">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="m9 15 2 2 4-4" /></svg></span>
+            <span class="feature-familia">Para el control</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Verificación con QR</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Los documentos emitidos llevan un código QR que permite validar su vigencia al instante.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-control">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span>
+            <span class="feature-familia">Para el control</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Auditoría completa</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Cada acción queda registrada en una bitácora de solo lectura, en línea con la Ley 25.326.</p>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="bg-[var(--l-100)]">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]" data-galeria>
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Velo funcionando</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">No es una maqueta</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">Pantallas reales de la plataforma. Los datos que se ven son ficticios; el software es el que se instala.</p>
+      </div>
+
+      <div class="mt-9" data-controller="tabs" data-tabs-param-value="pantalla">
+        <div class="flex flex-wrap gap-2" role="tablist">
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="bandeja"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 12h-6l-2 3h-4l-2-3H2" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></svg> Bandeja
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="estadisticas"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 15l3.5-4 3 2.5L18 8" /></svg> Estadísticas
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="dashboard"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 14l4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg> Tablero
+            </button>
+        </div>
+
+          <div data-tabs-target="panel" data-tab-name="bandeja" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: Bandeja" class="block w-full" loading="lazy" decoding="async" src="capturas/bandeja.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">La cola de trabajo del área: pestañas con el conteo en vivo, filtros por trámite, estado y agente, y el botón para tomar una solicitud.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="estadisticas" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: Estadísticas" class="block w-full" loading="lazy" decoding="async" src="capturas/estadisticas.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Volumen, solicitudes en curso, cerradas y días promedio de cierre, con gráficos por estado y por trámite, exportables a PDF y CSV.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="dashboard" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: Tablero" class="block w-full" loading="lazy" decoding="async" src="capturas/dashboard.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">El tablero del agente al entrar: lo que tiene sin atender, lo que está trabajando y los contadores por área y por trámite, actualizados en vivo.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]">
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Cómo funciona</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">Así avanza un trámite</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">Del formulario a la resolución, cada paso queda registrado.</p>
+      </div>
+
+      <ol class="linea-tiempo mt-12" data-linea-tiempo data-controller="reveal" data-reveal-stagger-value="120">
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">1</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Elegí el trámite</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">El vecino lo busca en el catálogo y lo abre.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">2</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Completá el formulario</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Carga los datos y adjunta la documentación requerida.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">3</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">El municipio lo toma</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">La solicitud entra a la bandeja y un agente la toma.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">4</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Movimientos y respuestas</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Verificaciones, respuestas y consultas se agregan al expediente.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">5</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Resolución y aviso</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">El trámite se resuelve y el vecino recibe la notificación.</p>
+          </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="bg-[var(--l-dark)] text-[var(--l-ondark-dim)]">
+    <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-[22px] text-[13px]">
+      <span class="flex items-center gap-2">
+        <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-[var(--l-ondark)]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10.5L12 4l8 6.5" /><path d="M5 10.5h14" /><path d="M6 10.5V18" /><path d="M10 10.5V18" /><path d="M14 10.5V18" /><path d="M18 10.5V18" /><path d="M4 18h16" /><path d="M3 21h18" /></svg></span>
+        Trámites Digitales · Plataforma municipal en línea
+      </span>
+      <span>Página de presentación · no indexada</span>
+    </div>
+  </footer>
+
 </div>
-  </div>
-
-  <div class="ds-sub">
-    <h3><b>3.</b> Matriz de roles y permisos</h3>
-    <p>Vocabulario completo de permisos del sistema y su asignación a cada rol de base. El municipio puede además componer roles propios con cualquier combinación de estos permisos. Esta tabla se genera directamente desde la definición vigente del sistema.</p>
-    <p class="nota">75 permisos en 16 grupos funcionales · 6 roles de base</p>
-    <ul class="leyenda">
-      <li><b>✓</b> El rol tiene el permiso</li>
-      <li>— El rol no tiene el permiso</li>
-    </ul>
-    <div class="tabla-wrap">
-      <table class="matriz">
-        <thead><tr>
-          <th scope="col">Permiso</th>
-          <th scope="col">Administrador</th><th scope="col">Supervisor</th><th scope="col">Agente</th><th scope="col">Auditor</th><th scope="col">Visualizador</th><th scope="col">Vecino</th>
-        </tr></thead>
-        <tbody><tr class="grupo"><th scope="colgroup" colspan="7">Roles</th></tr><tr>
-  <th scope="row"><span>Ver los roles y sus permisos</span><code>ver-rol</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear nuevos roles</span><code>crear-rol</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar un rol y los permisos que tiene asignados</span><code>editar-rol</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar roles (no los del sistema)</span><code>borrar-rol</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Usuarios</th></tr><tr>
-  <th scope="row"><span>Ver el listado y la ficha de usuarios internos</span><code>ver-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Dar de alta usuarios internos</span><code>crear-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar datos, roles y nivel de un usuario</span><code>editar-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar usuarios (papelera recuperable)</span><code>borrar-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Cambiar la dirección de e-mail de un usuario</span><code>cambiar-email-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Validar la identidad de un vecino y promover su nivel</span><code>validar-usuario</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Personas</th></tr><tr>
-  <th scope="row"><span>Ver el padrón de personas</span><code>ver-persona</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Dar de alta personas en el padrón</span><code>crear-persona</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar datos de una persona</span><code>editar-persona</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar personas (papelera recuperable)</span><code>borrar-persona</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Ver el DNI completo y sus imágenes (dato sensible)</span><code>ver-dni</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Cargar solicitudes en nombre de una persona</span><code>carga-solicitudes-persona</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Áreas</th></tr><tr>
-  <th scope="row"><span>Ver las áreas y su jerarquía</span><code>ver-areas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear nuevas áreas</span><code>crear-areas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar áreas existentes</span><code>editar-areas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar áreas</span><code>borrar-areas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Asignar usuarios a un área</span><code>asignar-areas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Solicitudes</th></tr><tr>
-  <th scope="row"><span>Mover una solicitud de un área a otra</span><code>mover-area</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Ver las solicitudes de los vecinos</span><code>ver-solicitudes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Iniciar/cargar solicitudes</span><code>crear-solicitudes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar solicitudes existentes</span><code>editar-solicitudes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar solicitudes</span><code>borrar-solicitudes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Tomar y trabajar solicitudes de la bandeja</span><code>atender-solicitudes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Ver el detalle del trámite de una solicitud</span><code>ver-solicitud-tramite</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Reasignar una solicitud a otro agente/área</span><code>reasignar-solicitud</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Ver las solicitudes rechazadas</span><code>ver-rechazados</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Publicar una solicitud (pasarla a estado publicado)</span><code>pasar-a-publicado</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Finalizar una solicitud en proceso</span><code>finalizar-solicitud</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Revocar/derogar una solicitud</span><code>revocar-solicitud</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Rechazar una solicitud</span><code>rechazar-solicitud</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Reactivar una solicitud rechazada</span><code>reactivar-solicitud</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Temas</th></tr><tr>
-  <th scope="row"><span>Ver el catálogo de temas</span><code>ver-temas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear nuevos temas</span><code>crear-temas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar temas existentes</span><code>editar-temas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar temas</span><code>borrar-temas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Formularios</th></tr><tr>
-  <th scope="row"><span>Ver los formularios definidos</span><code>ver-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear formularios nuevos</span><code>crear-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar formularios y sus campos</span><code>editar-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Publicar y despublicar formularios</span><code>publicar-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Duplicar un formulario para evolucionarlo</span><code>duplicar-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar formularios (papelera recuperable)</span><code>borrar-formularios</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Respuestas</th></tr><tr>
-  <th scope="row"><span>Ver las respuestas cargadas en los formularios</span><code>ver-respuestas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Cargar respuestas en un formulario</span><code>crear-respuestas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar respuestas existentes</span><code>editar-respuestas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar respuestas</span><code>borrar-respuestas</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Trámites</th></tr><tr>
-  <th scope="row"><span>Ver la definición de los trámites</span><code>ver-tramites</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear nuevos trámites</span><code>crear-tramites</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar trámites existentes</span><code>editar-tramites</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar trámites</span><code>borrar-tramites</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Asignar trámites a usuarios o áreas</span><code>asignar-tramites</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Habilita a este usuario como destinatario de asignaciones</span><code>puedo-asignar-tramite</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Ver los trámites asignados a uno mismo</span><code>tramite-asignado</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Acciones</th></tr><tr>
-  <th scope="row"><span>Ver las acciones (pasos/estados) de un trámite</span><code>ver-acciones</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear acciones en un trámite</span><code>crear-acciones</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar acciones existentes</span><code>editar-acciones</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar acciones</span><code>borrar-acciones</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Reportes</th></tr><tr>
-  <th scope="row"><span>Ver reportes y tableros</span><code>ver-reportes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Crear reportes</span><code>crear-reportes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar reportes</span><code>editar-reportes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Eliminar reportes</span><code>borrar-reportes</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Carnets</th></tr><tr>
-  <th scope="row"><span>Editar el diseño y los datos de los carnets</span><code>edicion-carnets</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Derogar/anular un carnet emitido</span><code>derrogar-carnets</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Niveles</th></tr><tr>
-  <th scope="row"><span>Iniciar trámites que requieren Nivel 1</span><code>tramite-nivel-1</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Iniciar trámites que requieren Nivel 2</span><code>tramite-nivel-2</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Iniciar trámites que requieren Nivel 3</span><code>tramite-nivel-3</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Iniciar trámites que requieren Nivel 4</span><code>tramite-nivel-4</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Panel</th></tr><tr>
-  <th scope="row"><span>Acceder al panel y la bandeja del agente</span><code>panel-agente</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Enviar y leer mensajes generales con los vecinos</span><code>mensajes-generales</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Auditoría</th></tr><tr>
-  <th scope="row"><span>Ver la bitácora de auditoría (append-only)</span><code>ver-auditoria</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr class="grupo"><th scope="colgroup" colspan="7">Configuración</th></tr><tr>
-  <th scope="row"><span>Ver la configuración general del sitio</span><code>ver-configuracion</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-<tr>
-  <th scope="row"><span>Editar branding, logo y datos de contacto</span><code>editar-configuracion</code></th>
-  <td class="si"><span aria-label="sí">✓</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td><td class="no"><span aria-label="no">—</span></td>
-</tr>
-</tbody>
-      </table>
-    </div>
-    <p class="nota">El rol administrador concentra la totalidad de los permisos por definición. El rol vecino no tiene permisos de plataforma: opera únicamente el portal público y sus propias solicitudes.</p>
-
-    <h4 style="margin-top:44px;font-size:19px">Niveles de verificación del vecino</h4>
-    <p class="nota" style="margin-top:8px">Cada trámite define el nivel mínimo que exige. El nivel de una persona se eleva a medida que acredita su identidad.</p>
-    <div class="tabla-wrap">
-      <table>
-        <thead><tr>
-          <th scope="col">Nivel</th>
-          <th scope="col">Cómo se alcanza</th>
-          <th scope="col">Qué habilita</th>
-        </tr></thead>
-        <tbody><tr>
-  <th scope="row">Nivel 1 — cuenta registrada</th>
-  <td>Registro en el portal con un correo electrónico.</td>
-  <td>Navegar el catálogo y preparar una solicitud.</td>
-</tr>
-<tr>
-  <th scope="row">Nivel 2 — e-mail verificado</th>
-  <td>Confirmación del correo mediante el enlace enviado.</td>
-  <td>Iniciar los trámites de nivel básico.</td>
-</tr>
-<tr>
-  <th scope="row">Nivel 3 — identidad validada</th>
-  <td>Carga del DNI (frente y dorso) y validación por un agente municipal.</td>
-  <td>Iniciar trámites que exigen identidad acreditada.</td>
-</tr>
-<tr>
-  <th scope="row">Nivel 4 — verificación reforzada</th>
-  <td>Verificación reforzada con documentación adicional, a criterio del municipio.</td>
-  <td>Iniciar los trámites de mayor exigencia.</td>
-</tr>
-</tbody>
-      </table>
-    </div>
-
-    <p class="nota" style="margin-top:44px"><strong style="color:var(--ink);font-weight:500">Sobre este documento.</strong> Las secciones 1 y 3 se generan a partir de la definición vigente del sistema, de modo que reflejan el software efectivamente instalado y no una descripción redactada aparte. Los procedimientos de la sección 2 describen el circuito estándar; cada municipio puede ajustarlo configurando sus propios trámites, áreas y roles sin modificar el software.</p>
-  </div>
-</section>
-
-<section class="cta">
-  <span class="sec-label">05 — Contacto</span>
-  <h2>¿Tu municipio necesita esto?<br><em>Hablemos.</em></h2>
-  <a class="btn-acc" href="mailto:hola@logiu.com.ar?subject=Tr%C3%A1mites%20Digitales">hola@logiu.com.ar</a>
-</section>
-
-<footer>
-  <span>Trámites Digitales · Plataforma municipal en línea · <a href="/">logiu</a></span>
-  <span><a href="/">← Volver a logiu</a></span>
-</footer>
-
+<!-- END app/views/pages/caracteristicas.html.erb -->
+  
+<p class="mx-auto max-w-[1200px] px-6 pb-10 text-center text-[13px] text-[#8b97a8]"><a class="font-semibold text-marca hover:underline" href="/">← Volver a logiu</a></p>
 <script>
-  document.querySelectorAll('.tab').forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var clave = tab.dataset.tab;
-      document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('is-on', t === tab); });
-      document.querySelectorAll('.shot').forEach(function (s) {
-        s.classList.toggle('is-on', s.dataset.panel === clave);
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var haveIO = 'IntersectionObserver' in window;
+
+  // reveal_controller.js
+  document.querySelectorAll('[data-controller~="reveal"]').forEach(function (root) {
+    var items = root.querySelectorAll('[data-reveal-item]');
+    if (!items.length) items = [root];
+    items = Array.prototype.slice.call(items);
+    if (!haveIO || reduce) {
+      items.forEach(function (i) { i.classList.add('is-revealed'); });
+      return;
+    }
+    var stagger = parseInt(root.dataset.revealStaggerValue || '70', 10);
+    items.forEach(function (i) { i.classList.add('reveal-pending'); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.style.setProperty('--reveal-delay', (items.indexOf(e.target) * stagger) + 'ms');
+        e.target.classList.add('is-revealed');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (i) { obs.observe(i); });
+  });
+
+  // contador_controller.js
+  document.querySelectorAll('[data-controller~="contador"]').forEach(function (el) {
+    var objetivo = parseInt(el.dataset.contadorObjetivoValue, 10);
+    if (!haveIO || reduce || isNaN(objetivo)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
+      obs.disconnect();
+      var inicio = performance.now();
+      (function paso(ahora) {
+        var avance = Math.min((ahora - inicio) / 1100, 1);
+        el.textContent = Math.round(objetivo * (1 - Math.pow(1 - avance, 3)));
+        if (avance < 1) requestAnimationFrame(paso);
+      })(inicio);
+    }, { threshold: 0.6 });
+    obs.observe(el);
+  });
+
+  // tabs_controller.js (subconjunto: sin anidamiento ni turbo-frames)
+  document.querySelectorAll('[data-controller~="tabs"]').forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-tabs-target~="tab"]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-tabs-target~="panel"]'));
+    if (!tabs.length) return;
+    function show(name) {
+      panels.forEach(function (p) { p.classList.toggle('hidden', p.dataset.tabName !== name); });
+      tabs.forEach(function (t) {
+        var activo = t.dataset.tabName === name;
+        t.classList.toggle('tab-active', activo);
+        t.setAttribute('aria-selected', activo);
+        t.tabIndex = activo ? 0 : -1;
+      });
+    }
+    function mover(e, delta) {
+      var actual = tabs.findIndex(function (t) { return t.classList.contains('tab-active'); });
+      if (actual === -1) return;
+      e.preventDefault();
+      var prox = tabs[(actual + delta + tabs.length) % tabs.length];
+      prox.focus(); prox.click();
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { show(t.dataset.tabName); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') mover(e, +1);
+        if (e.key === 'ArrowLeft') mover(e, -1);
       });
     });
+    show(tabs[0].dataset.tabName);
   });
+
+  // imprimir_controller.js
+  document.querySelectorAll('[data-action~="imprimir#imprimir"]').forEach(function (btn) {
+    btn.addEventListener('click', function () { window.print(); });
+  });
+})();
 </script>
 </body>
 </html>
