@@ -1,0 +1,36 @@
+/* Paleta Tierras.
+ *
+ * Mismo mecanismo que en pinpadel/: `estilos.css` es la hoja compilada de la
+ * app de Trámites y todo su diseño cuelga de cuatro variables de marca más un
+ * acento por familia. Acá se redefinen y nada más, así la hoja se puede volver
+ * a portar desde Trámites sin perder estos colores. Va SIEMPRE después de
+ * estilos.css.
+ *
+ * Trámites es verde azulado y PinPadel azul noche: Tierras va a terracota, que
+ * es la misma familia cálida que el naranja de la app, así que la página y las
+ * capturas se leen como una sola pieza.
+ */
+
+.palette-tierras {
+  --color-brand: #9a4b1f;        /* terracota, legible sobre blanco */
+  --color-brand-dark: #3f2415;   /* marrón tierra: el fondo del hero */
+  --color-brand-light: #fdf6f0;
+  --color-brand-border: #e8a87c; /* ocre claro: destaca sobre el hero oscuro */
+}
+
+/* El blob del hero usa el color de marca, que sobre un hero marrón casi no se
+   ve. Se pasa al ocre para que el degradado tenga contraste. */
+.landing.palette-tierras .hero-blob {
+  background: radial-gradient(circle, rgba(232, 168, 124, 0.3) 0%, transparent 68%);
+}
+
+/* Las tres familias de tarjeta. En Trámites son vecino / municipio / control;
+   acá son catastro / expediente / atención, con el mismo mecanismo (--acento). */
+.palette-tierras .familia-ciudadania { --acento: #9a4b1f; } /* catastro */
+.palette-tierras .familia-operacion  { --acento: #1f5d7a; } /* expediente */
+.palette-tierras .familia-control    { --acento: #4a6b2a; } /* atención */
+
+/* `pb-10` la usa el párrafo del "← Volver a logiu" y Tailwind nunca la compiló:
+   la hoja de Trámites sólo trae pb-0, pb-1 y pb-4. Igual que en PinPadel, se
+   define acá a mano en vez de inventar una clase que el CSS no tiene. */
+.pb-10 { padding-bottom: 40px; }

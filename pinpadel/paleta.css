@@ -1,0 +1,35 @@
+/* Paleta PinPadel.
+ *
+ * `estilos.css` es la hoja compilada de la app de Trámites: todo su diseño
+ * cuelga de cuatro variables de marca y de tres acentos por familia. Este
+ * archivo las reemplaza por los colores de PinPadel (azul noche + lima) sin
+ * tocar la hoja original, así se puede volver a portarla desde Trámites y
+ * este archivo sigue valiendo. Va SIEMPRE después de estilos.css.
+ *
+ * Los dos colores salen de la app: `#17253f` es el fondo de `body` en
+ * app/assets/stylesheets/styles.css y `#c4d600` el lima del logo.
+ */
+
+.palette-pinpadel {
+  --color-brand: #1d3157;        /* azul de marca, legible sobre blanco */
+  --color-brand-dark: #17253f;   /* el azul noche de la app */
+  --color-brand-light: #f3f6fb;
+  --color-brand-border: #c4d600; /* el lima del logo: destaca sobre el hero */
+}
+
+/* El blob del hero es del color de marca: en un hero azul sobre azul no se ve.
+   Se pasa a lima para que el degradado tenga algo que hacer. */
+.landing.palette-pinpadel .hero-blob {
+  background: radial-gradient(circle, rgba(196, 214, 0, 0.32) 0%, transparent 68%);
+}
+
+/* Las tres familias de tarjeta. En Trámites son vecino / municipio / control;
+   acá son club / jugador / organizador, con el mismo mecanismo (--acento). */
+.palette-pinpadel .familia-ciudadania { --acento: #1d3157; } /* para el club */
+.palette-pinpadel .familia-operacion  { --acento: #0f6f8c; } /* para el jugador */
+.palette-pinpadel .familia-control    { --acento: #6f7d00; } /* para el organizador */
+
+/* `pb-10` la usa el párrafo del "← Volver a logiu", pero Tailwind nunca la
+   compiló: la hoja de Trámites sólo trae pb-0, pb-1 y pb-4. Se define acá
+   a mano en vez de inventar una clase que el CSS no tiene. */
+.pb-10 { padding-bottom: 40px; }

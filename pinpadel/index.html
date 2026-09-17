@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+<meta charset="utf-8">
+<title>PinPadel · logiu</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Plataforma de gestión para clubes de pádel: turnos y canchas, torneos en tres formatos con llaves automáticas, caja e inscripciones por enlace.">
+<meta property="og:title" content="PinPadel · logiu">
+<meta property="og:description" content="Plataforma de gestión para clubes de pádel: turnos y canchas, torneos en tres formatos con llaves automáticas, caja e inscripciones por enlace.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logiu.com.ar/pinpadel">
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="paleta.css">
+</head>
+<body class="landing h-full palette-pinpadel">
+<div class="w-full overflow-x-hidden">
+
+  <header class="sticky top-0 z-50 border-b border-[var(--l-200)] bg-white/90 backdrop-blur-md backdrop-saturate-150 print:hidden">
+    <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-[11px] sm:px-6">
+      <span class="flex items-center gap-2.5">
+        <span class="flex h-9 w-9 items-center justify-center rounded-[10px] bg-marca text-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M5.2 5.2a10 10 0 0 1 0 13.6" /><path d="M18.8 5.2a10 10 0 0 0 0 13.6" /></svg></span>
+        <span class="font-display text-[16px] font-bold text-ink">PinPadel</span>
+      </span>
+
+      <nav class="flex items-center gap-1 rounded-full border border-[var(--l-200)] bg-[var(--l-50)] p-1"
+           aria-label="Secciones de la presentación">
+          <a class="rounded-full px-4 py-1.5 text-[13.5px] font-semibold transition-colors bg-marca text-white shadow-sm" aria-current="page" href="./">Funcionalidades</a>
+          <a class="rounded-full px-4 py-1.5 text-[13.5px] font-semibold transition-colors text-[#5a6b82] hover:text-marca" href="/">logiu</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-oscuro relative overflow-hidden bg-[var(--l-dark)]">
+    <div class="hero-malla pointer-events-none absolute inset-0"></div>
+    <div class="hero-blob pointer-events-none absolute -right-[6%] top-[4%] h-[420px] w-[420px] rounded-full"></div>
+
+    <div class="relative mx-auto max-w-[1200px] px-6 pb-0 pt-[72px]">
+      <div class="mx-auto max-w-[760px] text-center" data-controller="reveal" data-reveal-stagger-value="90">
+        <span data-reveal-item class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[12.5px] font-bold uppercase tracking-[0.12em] text-[var(--l-ondark)]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M5.2 5.2a10 10 0 0 1 0 13.6" /><path d="M18.8 5.2a10 10 0 0 0 0 13.6" /></svg> Qué hace el sistema
+        </span>
+        <h1 data-reveal-item class="mt-6 font-display text-[42px] font-extrabold leading-[1.02] tracking-[-0.03em] text-white sm:text-[58px]">
+          El club entero,
+          <span class="hero-destacado">en una pantalla</span>
+        </h1>
+        <p data-reveal-item class="mx-auto mt-5 max-w-[600px] text-[17px] leading-[1.55] text-[var(--l-ondark)] sm:text-[19px]">Turnos, torneos y caja de un complejo de pádel en un solo sistema. Los jugadores se inscriben solos y el club deja de administrar por WhatsApp y planilla.</p>
+        <div data-reveal-item class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a class="btn-brillo inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[14.5px] font-bold text-[var(--l-dark)]" href="https://pinpadel.com" target="_blank" rel="noopener">
+            Velo funcionando <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" /></svg>
+</a>          <a href="#modulos" class="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-[14.5px] font-bold text-white transition hover:bg-white/10">
+            Ver los módulos
+          </a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto mt-14 max-w-[1000px]" data-controller="reveal" data-hero-mockup>
+        <div data-reveal-item class="mockup-marco">
+          <span class="mockup-barra">
+            <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+          </span>
+          <img alt="Captura de la plataforma: grilla semanal de turnos por cancha" class="block w-full" loading="eager" decoding="async" src="capturas/turnos.png" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-[var(--l-200)] bg-white pt-[92px]">
+    <div class="mx-auto max-w-[1200px] px-6 pb-[52px]">
+      <div class="grid grid-cols-2 gap-6 lg:grid-cols-4" data-controller="reveal" data-reveal-stagger-value="80">
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-controller="contador" data-contador-objetivo-value="3">3</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">formatos de torneo</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-controller="contador" data-contador-objetivo-value="297">297</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">llaves pre-armadas, de 6 a 32 parejas</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-controller="contador" data-contador-objetivo-value="5">5</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">roles de acceso</p>
+          </div>
+          <div data-reveal-item class="text-center">
+            <p class="font-display text-[44px] font-extrabold leading-none tracking-[-0.02em] text-marca sm:text-[54px]"
+               data-controller="contador" data-contador-objetivo-value="4">4</p>
+            <p class="mt-2 text-[13.5px] font-semibold leading-snug text-[#5a6b82]">medios de cobro en caja</p>
+          </div>
+      </div>
+      <p class="mt-8 text-center text-[12.5px] text-[#8b97a8]">Cifras tomadas de la definición vigente del sistema, no de un folleto.</p>
+    </div>
+  </section>
+
+  <section id="modulos" class="bg-white">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]">
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Funcionalidades</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">Del turno del martes a la final del domingo</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">La plataforma cubre las tres cosas que un club de pádel hace todos los días: alquilar la cancha, correr el torneo y cobrar. Estos son los módulos que operan hoy.</p>
+      </div>
+
+      <div class="mt-11 grid grid-cols-1 gap-5 md:grid-cols-2" data-controller="reveal" data-reveal-stagger-value="110">
+          <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
+            <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="17" rx="2" /><path d="M3 9h18" /><path d="M8 2v4" /><path d="M16 2v4" /><path d="M8 13h4" /></svg></span>
+            <span class="feature-familia">Para el club</span>
+            <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Turnos y canchas</h3>
+            <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">Grilla semanal por cancha, con turnos fijos que se repiten solos y admiten excepciones por fecha. Cada tipo de turno lleva su color, así se lee de un vistazo qué está alquilado y qué está libre.</p>
+          </article>
+          <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
+            <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M6 3h12v6a6 6 0 0 1-12 0z" /><path d="M12 15v4" /><path d="M8 21h8" /></svg></span>
+            <span class="feature-familia">Para el club</span>
+            <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Torneos en tres formatos</h3>
+            <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">Americano, Clásico —zona de grupos más llaves eliminatorias— y Liga. Al iniciar, el sistema arma grupos, equipos, fixture y tabla en una sola operación: si algo falla, no queda nada a medias.</p>
+          </article>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" data-controller="reveal">
+          <article data-reveal-item class="feature-card familia-ciudadania">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="13" rx="2" /><path d="M2 11h20" /><path d="M6 15h4" /></svg></span>
+            <span class="feature-familia">Para el club</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Caja</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Consumos del buffet e inscripciones de torneo en un mismo mostrador, con pagos parciales y cuatro medios de cobro.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-ciudadania">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3v12" /><path d="M18 9v12" /><path d="M6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" /><path d="M18 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" /><path d="M6 9h12" /></svg></span>
+            <span class="feature-familia">Para el club</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Las llaves se arman solas</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">297 plantillas pre-generadas cubren de 6 a 32 parejas, con los byes ya resueltos. Nadie dibuja el cuadro a mano.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-operacion">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" /><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" /></svg></span>
+            <span class="feature-familia">Para el jugador</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Inscripción por enlace</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">El club comparte un link corto y la pareja se anota sola. El jugador no necesita crear cuenta ni instalar nada.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-operacion">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></svg></span>
+            <span class="feature-familia">Para el jugador</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Perfil e historial</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Cada jugador acumula torneos jugados, posiciones y categorías. El club lo usa como catálogo para armar la próxima fecha.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-control">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 15l3.5-4 3 2.5L18 8" /></svg></span>
+            <span class="feature-familia">Para el organizador</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Circuitos con ranking</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Varios torneos forman una serie con puntaje configurable por posición. Las tablas se recalculan solas al cargar cada resultado.</p>
+          </article>
+          <article data-reveal-item class="feature-card familia-control">
+            <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-5h6v5" /><path d="M9 10h.01" /><path d="M15 10h.01" /></svg></span>
+            <span class="feature-familia">Para el organizador</span>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Varios clubes, una cuenta</h3>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Quien organiza torneos en distintas sedes las gestiona todas desde el mismo panel, sin una cuenta por club.</p>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="bg-[var(--l-100)]">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]">
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Velo funcionando</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">No es una maqueta</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">Pantallas reales de la plataforma, tomadas de un entorno de prueba con un club, un torneo y una semana de turnos armados a propósito. Los jugadores son inventados; el software es el que se instala.</p>
+      </div>
+
+      <div class="mt-9" data-controller="tabs" data-tabs-param-value="pantalla">
+        <div class="flex flex-wrap gap-2" role="tablist">
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="turnos"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="17" rx="2" /><path d="M3 9h18" /><path d="M8 2v4" /><path d="M16 2v4" /></svg> Turnos
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="torneos"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M6 3h12v6a6 6 0 0 1-12 0z" /><path d="M12 15v4" /><path d="M8 21h8" /></svg> Torneos
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="torneo"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 15l3.5-4 3 2.5L18 8" /></svg> Adentro del torneo
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="llaves"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h5v6h5" /><path d="M3 18h5v-6" /><path d="M13 12h8" /></svg> Llaves
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="caja"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="13" rx="2" /><path d="M2 11h20" /></svg> Caja
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="perfil"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></svg> Perfil del jugador
+            </button>
+        </div>
+
+          <div data-tabs-target="panel" data-tab-name="turnos" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: grilla semanal de turnos" class="block w-full" loading="lazy" decoding="async" src="capturas/turnos.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">La semana de una cancha: cada turno con su horario, su cliente y el color del tipo de reserva. Se cambia de cancha con un clic y los horarios fijos se pintan solos.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="torneos" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: listado de torneos del club" class="block w-full" loading="lazy" decoding="async" src="capturas/torneos.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Los torneos del club con sus categorías y el formato de cada una. Un torneo puede correr varias categorías a la vez, cada una con su propio cuadro.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="torneo" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: tabla de posiciones dentro de una categoría" class="block w-full" loading="lazy" decoding="async" src="capturas/torneo.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Adentro de una categoría: detalles, inscriptos, posiciones y partidos en cuatro pestañas. La tabla se reordena sola con cada resultado cargado.</p>
+          </div>
+
+          <div data-tabs-target="panel" data-tab-name="llaves" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: cuadro de llaves eliminatorias" class="block w-full" loading="lazy" decoding="async" src="capturas/llaves.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">El cuadro de eliminación con los resultados por set y la cancha asignada a cada partido. Al cargar un resultado, el ganador aparece en la ronda siguiente.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="caja" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: ventas pendientes en la caja" class="block w-full" loading="lazy" decoding="async" src="capturas/caja.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Lo que falta cobrar, en una sola pantalla: consumos del buffet e inscripciones de torneo, con el detalle de cada venta y el total pendiente del día.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="perfil" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: perfil de un jugador con su historial" class="block w-full" loading="lazy" decoding="async" src="capturas/perfil.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">El perfil de un jugador: torneos jugados, posición en cada uno y cuándo fue el último. Se arma solo con los resultados que el club va cargando.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-[1200px] px-6 py-[72px]">
+      <div class="max-w-[680px]" data-controller="reveal">
+        <span data-reveal-item class="block text-[13px] font-bold uppercase tracking-[0.1em] text-marca">Cómo funciona</span>
+        <h2 data-reveal-item class="mt-2 font-display text-[32px] font-bold tracking-[-0.015em] text-ink sm:text-[38px]">Así corre un torneo</h2>
+        <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">Del anuncio a la premiación, sin una planilla de por medio.</p>
+      </div>
+
+      <ol class="linea-tiempo mt-12" data-controller="reveal" data-reveal-stagger-value="120">
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">1</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Creá el torneo</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Fecha, sede y una categoría por cuadro, cada una con su formato.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">2</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Abrí las inscripciones</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Se comparte un enlace corto y las parejas se anotan solas.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">3</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Iniciá</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Un botón arma grupos, equipos, fixture y tabla de posiciones.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">4</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Cargá los resultados</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Cada set mueve las posiciones y completa la ronda siguiente.</p>
+          </li>
+          <li data-reveal-item class="paso">
+            <span class="paso-nodo">5</span>
+            <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Cerrá y cobrá</h3>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Las posiciones van al historial y al circuito; la caja queda saldada.</p>
+          </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="bg-[var(--l-dark)] text-[var(--l-ondark-dim)]">
+    <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-[22px] text-[13px]">
+      <span class="flex items-center gap-2">
+        <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-[var(--l-ondark)]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M5.2 5.2a10 10 0 0 1 0 13.6" /><path d="M18.8 5.2a10 10 0 0 0 0 13.6" /></svg></span>
+        PinPadel · Gestión de clubes de pádel
+      </span>
+      <span>Página de presentación</span>
+    </div>
+  </footer>
+
+</div>
+
+<p class="mx-auto max-w-[1200px] px-6 pb-10 text-center text-[13px] text-[#8b97a8]"><a class="font-semibold text-marca hover:underline" href="/">← Volver a logiu</a></p>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var haveIO = 'IntersectionObserver' in window;
+
+  // reveal_controller.js
+  document.querySelectorAll('[data-controller~="reveal"]').forEach(function (root) {
+    var items = root.querySelectorAll('[data-reveal-item]');
+    if (!items.length) items = [root];
+    items = Array.prototype.slice.call(items);
+    if (!haveIO || reduce) {
+      items.forEach(function (i) { i.classList.add('is-revealed'); });
+      return;
+    }
+    var stagger = parseInt(root.dataset.revealStaggerValue || '70', 10);
+    items.forEach(function (i) { i.classList.add('reveal-pending'); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.style.setProperty('--reveal-delay', (items.indexOf(e.target) * stagger) + 'ms');
+        e.target.classList.add('is-revealed');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (i) { obs.observe(i); });
+  });
+
+  // contador_controller.js
+  document.querySelectorAll('[data-controller~="contador"]').forEach(function (el) {
+    var objetivo = parseInt(el.dataset.contadorObjetivoValue, 10);
+    if (!haveIO || reduce || isNaN(objetivo)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
+      obs.disconnect();
+      var inicio = performance.now();
+      (function paso(ahora) {
+        var avance = Math.min((ahora - inicio) / 1100, 1);
+        el.textContent = Math.round(objetivo * (1 - Math.pow(1 - avance, 3)));
+        if (avance < 1) requestAnimationFrame(paso);
+      })(inicio);
+    }, { threshold: 0.6 });
+    obs.observe(el);
+  });
+
+  // tabs_controller.js (subconjunto: sin anidamiento ni turbo-frames)
+  document.querySelectorAll('[data-controller~="tabs"]').forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-tabs-target~="tab"]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-tabs-target~="panel"]'));
+    if (!tabs.length) return;
+    function show(name) {
+      panels.forEach(function (p) { p.classList.toggle('hidden', p.dataset.tabName !== name); });
+      tabs.forEach(function (t) {
+        var activo = t.dataset.tabName === name;
+        t.classList.toggle('tab-active', activo);
+        t.setAttribute('aria-selected', activo);
+        t.tabIndex = activo ? 0 : -1;
+      });
+    }
+    function mover(e, delta) {
+      var actual = tabs.findIndex(function (t) { return t.classList.contains('tab-active'); });
+      if (actual === -1) return;
+      e.preventDefault();
+      var prox = tabs[(actual + delta + tabs.length) % tabs.length];
+      prox.focus(); prox.click();
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { show(t.dataset.tabName); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') mover(e, +1);
+        if (e.key === 'ArrowLeft') mover(e, -1);
+      });
+    });
+    show(tabs[0].dataset.tabName);
+  });
+})();
+</script>
+</body>
+</html>
