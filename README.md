@@ -100,11 +100,20 @@ Trámites, que es donde se editan; acá hay una copia estática con el mismo dis
 | `capturas/*.png` | `app/assets/images/caracteristicas/` de la app |
 
 El port le saca el andamiaje de Rails (importmap, Stimulus, CSRF) y lo reemplaza por
-un shim de ~60 líneas al final del `<body>` que reimplementa a mano los cuatro
-comportamientos que estas páginas usan: `reveal` (animación de entrada), `contador`
-(las cifras que suben), `tabs` (la galería de capturas) e `imprimir` (el botón
-**Imprimir / Guardar PDF** del data sheet, que sigue funcionando: son 14 páginas A4
-con el layout de impresión de la app).
+un shim de ~60 líneas al final del `<body>` que reimplementa a mano los controladores
+Stimulus: `reveal` (animación de entrada), `contador` (números que suben), `tabs` (la
+galería de capturas) e `imprimir` (el botón **Imprimir / Guardar PDF** del data sheet,
+que sigue funcionando: son 14 páginas A4 con el layout de impresión de la app).
+
+**El port además saca la sección de cifras**, los cuatro contadores grandes del
+principio. Es la única parte de la vista que la página de logiu no publica: adentro de
+la app tienen sentido, de cara afuera son cuatro números sin contexto. Lo hace
+`sin_cifras()`, que las ubica por los `data-cifra` de la vista. Va en el script y no a
+mano sobre el HTML portado justamente porque el HTML portado lo pisa el próximo port;
+el arreglo de fondo es sacar la sección de la vista en el repo de Trámites, y mientras
+siga ahí el script la saca en cada pasada. Si un día no la encuentra, avisa por
+consola en vez de seguir de largo. `contador` queda en el shim igual: si la vista suma
+contadores en otro lado, siguen andando.
 
 **Para regenerarlas** —cuando cambie la página en la app, o cuando cambien los
 permisos y el data sheet quede viejo— con el servidor de Trámites levantado en
@@ -127,8 +136,14 @@ dos páginas se pueden mover de carpeta sin romperse.
 **Esta sí está escrita a mano.** PinPadel (el repo `elcanchero`, una app Rails de
 gestión para clubes de pádel) no tiene una vista `/caracteristicas` que portar, así
 que `index.html` se escribió directo, reusando el diseño de Trámites: misma
-estructura de secciones (hero, cifras, funcionalidades, galería, línea de tiempo),
-mismo JS al pie y **el mismo `estilos.css`, copiado sin modificar**.
+estructura de secciones (hero, funcionalidades, galería, línea de tiempo), mismo JS al
+pie y **el mismo `estilos.css`, copiado sin modificar**.
+
+Dentro de Funcionalidades, los tres formatos de torneo —Americano, Americano de
+parejas y Clásico— tienen su propia fila de tarjetas, con la familia `Formato`. Están
+ahí porque son lo que más se pregunta del producto y se confunden entre sí: cada una
+dice **cómo se inscribe** (solo o en pareja) y **cómo se compite** (todos contra
+todos, o zonas más llaves).
 
 El truco para que se vea como PinPadel y no como Trámites es `paleta.css`, que se
 carga después:
@@ -280,11 +295,13 @@ cuestan de encontrar:
   es **borrarlos** y dejar que el navegador reparta solo; `columns.adjust()` no sirve
   —ensancha todavía más— y un evento `resize` no hace nada.
 
-**Esta página no lleva la sección de cifras** que tienen Trámites y PinPadel: iba con
-los totales del sistema (expedientes, parcelas, pases, barrios) y se sacó a propósito
-—son humo y molestan más de lo que suman—. Por eso `tierras/index.html` tampoco trae
-el `contador_controller.js` al pie: no quedó nada que contar. Si alguna vez vuelve, se
-copia el bloque de `pinpadel/index.html` junto con su controlador.
+**Ninguna de las tres páginas de caso lleva sección de cifras.** Las tres tenían el
+mismo bloque —cuatro contadores grandes arriba de todo— y se sacó de las tres a
+propósito: son humo y molestan más de lo que suman. En Tierras y PinPadel se borró el
+markup; en Trámites lo saca el port en cada pasada (ver arriba). Como consecuencia,
+`tierras/index.html` y `pinpadel/index.html` tampoco traen el `contador_controller.js`
+al pie: no quedó nada que contar. La única copia que sobrevive está en el `SHIM` de
+`tools/portar-tramites.py`.
 
 ---
 
@@ -364,5 +381,7 @@ este repo no usa.
    procedimiento de arriba: copiar la última `<a class="proj-row">` de la sección y
    cambiarle `href`, título y bajada. La bajada entra en una sola línea hasta unos
    110 caracteres; más larga que eso, salta a dos y rompe el ritmo de la lista.
-4. Probar local con el servidor —que la fila se vea, que el link abra el caso y que
-   el "← Volver a logiu" vuelva—, y recién ahí pushear.
+   Copiando una fila entera se hereda el `target="_blank" rel="noopener"` que llevan
+   todas: los casos abren en pestaña nueva y la fila nueva tiene que hacer lo mismo.
+4. Probar local con el servidor —que la fila se vea, que el link abra el caso en una
+   pestaña nueva y que el "← Volver a logiu" vuelva—, y recién ahí pushear.

@@ -3,8 +3,12 @@
 #
 # Toma el HTML tal como lo renderiza Rails (servidor de desarrollo), le saca el
 # andamiaje de la app (importmap, Stimulus, CSRF) y lo reemplaza por un shim de
-# ~60 líneas que reimplementa los cuatro comportamientos que estas dos páginas
-# usan: reveal, contador, tabs e imprimir.
+# ~60 líneas que reimplementa a mano los controladores Stimulus: reveal,
+# contador, tabs e imprimir.
+#
+# `contador` queda aunque hoy no lo use ninguna de las dos páginas portadas: la
+# única sección con contadores era la de cifras, que `sin_cifras()` saca a la
+# salida. Si la vista de Trámites suma contadores en otro lado, siguen andando.
 #
 #   python3 portar.py            (requiere bin/rails server en :3000)
 
@@ -102,6 +106,34 @@ SHIM = """
 """
 
 # ------------------------------------------------------------------ conversión
+def sin_cifras(inner):
+    """Saca la sección de cifras: los cuatro contadores grandes del principio.
+
+    Es lo único que la página de logiu no publica de la vista original. Adentro
+    de la app tienen sentido; de cara afuera son cuatro números sin contexto que
+    no le dicen nada a nadie.
+
+    Va acá y no a mano sobre el HTML portado porque el HTML portado lo pisa el
+    próximo port. El arreglo de fondo es sacar la sección de la vista en el repo
+    de Trámites; mientras siga ahí, esto la saca en cada pasada.
+
+    Se la reconoce por los `data-cifra` que la vista les pone a los contadores.
+    Si eso cambia, avisa en vez de seguir de largo en silencio.
+    """
+    if "data-cifra" not in inner:
+        print("AVISO: no se encontró la sección de cifras. ¿Cambió la vista de "
+              "Trámites? Revisar que no se estén publicando de nuevo.")
+        return inner
+    ini = inner.rindex("<section", 0, inner.index("data-cifra"))
+    prof, pos = 0, ini
+    for m in re.finditer(r"<section\b|</section>", inner[ini:]):
+        prof += 1 if m.group().startswith("<section") else -1
+        if prof == 0:
+            pos = ini + m.end()
+            break
+    return inner[:ini] + inner[pos:]
+
+
 def cuerpo(doc):
     """Devuelve (atributos del body, html interno) sin los <script> de la app."""
     m = re.search(r"<body([^>]*)>(.*)</body>", doc, re.S)
@@ -112,8 +144,10 @@ def cuerpo(doc):
     attrs = re.sub(r'\sdata-action="turbo:[^"]*"', "", attrs)
     return attrs, inner
 
-def pagina(doc, titulo, descripcion, url, enlaces, body_extra=""):
+def pagina(doc, titulo, descripcion, url, enlaces, body_extra="", quitar_cifras=False):
     attrs, inner = cuerpo(doc)
+    if quitar_cifras:
+        inner = sin_cifras(inner)
     for viejo, nuevo in enlaces.items():
         inner = inner.replace('href="%s"' % viejo, 'href="%s"' % nuevo)
     # Las capturas pasan a ser archivos del sitio, sin digest de Propshaft.
@@ -180,7 +214,7 @@ bajar_capturas(carac)
     carac, "Trámites Digitales · logiu", DESC_CARAC,
     "https://logiu.com.ar/tramites-digitales",
     {"/caracteristicas": "./", "/caracteristicas/data-sheet": "data-sheet/", "__base__": ""},
-    volver % "/"), encoding="utf-8")
+    volver % "/", quitar_cifras=True), encoding="utf-8")
 
 ds = bajar("/caracteristicas/data-sheet")
 (DESTINO / "data-sheet" / "index.html").write_text(pagina(
