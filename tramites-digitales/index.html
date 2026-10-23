@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <title>Trámites Digitales · logiu</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
+<meta name="description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, pagos con Mercado Pago, bandeja del personal, mensajería y notificaciones.">
 <meta property="og:title" content="Trámites Digitales · logiu">
-<meta property="og:description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, bandeja del personal, mensajería y notificaciones.">
+<meta property="og:description" content="Portal municipal de trámites en línea: solicitudes con seguimiento por estados, pagos con Mercado Pago, bandeja del personal, mensajería y notificaciones.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://logiu.com.ar/tramites-digitales">
 <link rel="icon" href="icono.svg" type="image/svg+xml">
@@ -16,15 +16,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilos.css">
 </head>
-<body class="landing h-full palette-teal"
+<body class="landing h-full palette-verde"
        
         data-action="turbo:submit-start@document->
 submit-guard#disable turbo:submit-end@document->submit-guard#enable">
-    <!-- BEGIN app/views/pages/caracteristicas.html.erb
+    <!-- BEGIN app/views/paginas/caracteristicas.html.erb
 -->
 <div class="w-full overflow-x-hidden">
 
-  <!-- BEGIN app/views/pages/_caracteristicas_nav.html.erb
+  <!-- BEGIN app/views/paginas/_caracteristicas_nav.html.erb
 --><header class="sticky top-0 z-50 border-b border-[var(--l-200)] bg-white/90 backdrop-blur-md backdrop-saturate-150 print:hidden">
   <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-[11px] sm:px-6">
     <span class="flex items-center gap-2.5">
@@ -39,7 +39,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
     </nav>
   </div>
 </header>
-<!-- END app/views/pages/_caracteristicas_nav.html.erb -->
+<!-- END app/views/paginas/_caracteristicas_nav.html.erb -->
 
   <section class="hero-oscuro relative overflow-hidden bg-[var(--l-dark)]">
     <div class="hero-malla pointer-events-none absolute inset-0"></div>
@@ -85,7 +85,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
         <p data-reveal-item class="mt-[10px] text-[16.5px] text-[#5a6b82]">El portal cubre todo el ciclo del trámite. Estos son los módulos que operan hoy.</p>
       </div>
 
-      <div class="mt-11 grid grid-cols-1 gap-5 md:grid-cols-2" data-controller="reveal" data-reveal-stagger-value="110">
+      <div class="mt-11 grid grid-cols-1 gap-5 lg:grid-cols-3" data-controller="reveal" data-reveal-stagger-value="110">
           <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
             <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg></span>
             <span class="feature-familia">Para el vecino</span>
@@ -97,6 +97,12 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
             <span class="feature-familia">Para el vecino</span>
             <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Seguimiento por estados</h3>
             <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">Cada trámite tiene su propio camino y el vecino ve en qué punto está en todo momento.</p>
+          </article>
+          <article data-reveal-item class="feature-card feature-card-xl familia-ciudadania">
+            <span class="feature-icon feature-icon-xl"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /><path d="M2 10h20" /><path d="M6 15h4" /></svg></span>
+            <span class="feature-familia">Para el vecino</span>
+            <h3 class="mt-4 font-display text-[22px] font-bold leading-tight text-ink">Pagos en línea</h3>
+            <p class="mt-2.5 text-[15px] leading-[1.6] text-[#4f5e74]">El vecino paga con Mercado Pago desde su solicitud y el trámite avanza solo cuando el pago se acredita, en la cuenta del municipio.</p>
           </article>
       </div>
 
@@ -116,7 +122,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
           <article data-reveal-item class="feature-card familia-operacion">
             <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg></span>
             <span class="feature-familia">Para el municipio</span>
-            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Dashboard en vivo</h3>
+            <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Panel en vivo</h3>
             <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Contadores de bandeja y solicitudes sin leer se actualizan en tiempo real, sin recargar la página.</p>
           </article>
           <article data-reveal-item class="feature-card familia-ciudadania">
@@ -135,7 +141,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
             <span class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></svg></span>
             <span class="feature-familia">Para el control</span>
             <h3 class="mt-3.5 font-display text-[17px] font-bold leading-tight text-ink">Auditoría completa</h3>
-            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Cada acción queda registrada en una bitácora de solo lectura, en línea con la Ley 25.326.</p>
+            <p class="mt-2 text-[14px] leading-[1.55] text-[#4f5e74]">Quién hizo qué y cuándo queda asentado en una bitácora que la aplicación no permite modificar, con retención más larga para los accesos a documentación personal.</p>
           </article>
       </div>
     </div>
@@ -164,10 +170,16 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 15l3.5-4 3 2.5L18 8" /></svg> Estadísticas
             </button>
             <button type="button" role="tab"
-                    data-tabs-target="tab" data-tab-name="dashboard"
+                    data-tabs-target="tab" data-tab-name="panel"
                     data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
                     class="galeria-tab">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 14l4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg> Tablero
+            </button>
+            <button type="button" role="tab"
+                    data-tabs-target="tab" data-tab-name="pagos"
+                    data-action="tabs#select keydown.right->tabs#siguiente keydown.left->tabs#anterior"
+                    class="galeria-tab">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /><path d="M2 10h20" /><path d="M6 15h4" /></svg> Pagos
             </button>
         </div>
 
@@ -189,14 +201,23 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
             </div>
             <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Volumen, solicitudes en curso, cerradas y días promedio de cierre, con gráficos por estado y por trámite, exportables a PDF y CSV.</p>
           </div>
-          <div data-tabs-target="panel" data-tab-name="dashboard" role="tabpanel" class="mt-6">
+          <div data-tabs-target="panel" data-tab-name="panel" role="tabpanel" class="mt-6">
             <div class="mockup-marco mockup-marco-claro">
               <span class="mockup-barra">
                 <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
               </span>
-              <img alt="Captura de la plataforma: Tablero" class="block w-full" loading="lazy" decoding="async" src="capturas/dashboard.png" />
+              <img alt="Captura de la plataforma: Tablero" class="block w-full" loading="lazy" decoding="async" src="capturas/panel.png" />
             </div>
             <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">El tablero del agente al entrar: lo que tiene sin atender, lo que está trabajando y los contadores por área y por trámite, actualizados en vivo.</p>
+          </div>
+          <div data-tabs-target="panel" data-tab-name="pagos" role="tabpanel" class="mt-6">
+            <div class="mockup-marco mockup-marco-claro">
+              <span class="mockup-barra">
+                <span class="mockup-punto"></span><span class="mockup-punto"></span><span class="mockup-punto"></span>
+              </span>
+              <img alt="Captura de la plataforma: Pagos" class="block w-full" loading="lazy" decoding="async" src="capturas/pagos.png" />
+            </div>
+            <p class="mx-auto mt-4 max-w-[760px] text-center text-[14px] leading-[1.6] text-[#5a6b82]">Lo cobrado por Mercado Pago, para conciliar: el total del período con las comisiones y el neto, y cada pago con su medio, su estado y la solicitud que lo originó.</p>
           </div>
       </div>
     </div>
@@ -229,7 +250,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
           <li data-reveal-item class="paso">
             <span class="paso-nodo">4</span>
             <h3 class="mt-4 font-display text-[16px] font-bold leading-tight text-ink">Movimientos y respuestas</h3>
-            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Verificaciones, respuestas y consultas se agregan al expediente.</p>
+            <p class="mt-1.5 text-[13.5px] leading-[1.55] text-[#5a6b82]">Verificaciones, pagos, respuestas y consultas se agregan al expediente.</p>
           </li>
           <li data-reveal-item class="paso">
             <span class="paso-nodo">5</span>
@@ -251,7 +272,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
   </footer>
 
 </div>
-<!-- END app/views/pages/caracteristicas.html.erb -->
+<!-- END app/views/paginas/caracteristicas.html.erb -->
   
 <p class="mx-auto max-w-[1200px] px-6 pb-10 text-center text-[13px] text-[#8b97a8]"><a class="font-semibold text-marca hover:underline" href="/">← Volver a logiu</a></p>
 <script>

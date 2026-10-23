@@ -201,7 +201,7 @@ def bajar_capturas(doc):
         print("capturas/%s" % nombre)
 
 DESC_CARAC = ("Portal municipal de trámites en línea: solicitudes con seguimiento por estados, "
-              "bandeja del personal, mensajería y notificaciones.")
+              "pagos con Mercado Pago, bandeja del personal, mensajería y notificaciones.")
 DESC_DS = ("Data sheet de Trámites Digitales: catálogo de módulos, procedimientos por rol y "
            "matriz completa de roles y permisos.")
 

@@ -103,7 +103,7 @@ El port le saca el andamiaje de Rails (importmap, Stimulus, CSRF) y lo reemplaza
 un shim de ~60 líneas al final del `<body>` que reimplementa a mano los controladores
 Stimulus: `reveal` (animación de entrada), `contador` (números que suben), `tabs` (la
 galería de capturas) e `imprimir` (el botón **Imprimir / Guardar PDF** del data sheet,
-que sigue funcionando: son 14 páginas A4 con el layout de impresión de la app).
+que sigue funcionando: son 16 páginas A4 con el layout de impresión de la app).
 
 **El port además saca la sección de cifras**, los cuatro contadores grandes del
 principio. Es la única parte de la vista que la página de logiu no publica: adentro de

@@ -16,15 +16,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../estilos.css">
 </head>
-<body class="landing h-full palette-teal"
+<body class="landing h-full palette-verde"
        
         data-action="turbo:submit-start@document->
 submit-guard#disable turbo:submit-end@document->submit-guard#enable">
-    <!-- BEGIN app/views/pages/data_sheet.html.erb
+    <!-- BEGIN app/views/paginas/data_sheet.html.erb
 -->
 <div class="ds-doc w-full overflow-x-hidden bg-white">
 
-  <!-- BEGIN app/views/pages/_caracteristicas_nav.html.erb
+  <!-- BEGIN app/views/paginas/_caracteristicas_nav.html.erb
 --><header class="sticky top-0 z-50 border-b border-[var(--l-200)] bg-white/90 backdrop-blur-md backdrop-saturate-150 print:hidden">
   <div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-[11px] sm:px-6">
     <span class="flex items-center gap-2.5">
@@ -39,7 +39,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
     </nav>
   </div>
 </header>
-<!-- END app/views/pages/_caracteristicas_nav.html.erb -->
+<!-- END app/views/paginas/_caracteristicas_nav.html.erb -->
 
   <header class="border-b border-[var(--l-200)] bg-[var(--l-50)]">
     <div class="mx-auto max-w-[1000px] px-6 py-[52px]">
@@ -50,11 +50,11 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
       <dl class="mt-7 grid grid-cols-1 gap-x-10 gap-y-4 border-t border-[var(--l-200)] pt-6 sm:grid-cols-3">
         <div>
           <dt class="text-[12px] font-bold uppercase tracking-[0.1em] text-[#7a889c]">Versión del documento</dt>
-          <dd class="mt-1 text-[15px] font-semibold text-ink">1.0</dd>
+          <dd class="mt-1 text-[15px] font-semibold text-ink">1.1</dd>
         </div>
         <div>
           <dt class="text-[12px] font-bold uppercase tracking-[0.1em] text-[#7a889c]">Generado el</dt>
-          <dd class="mt-1 text-[15px] font-semibold text-ink">15 de septiembre de 2026</dd>
+          <dd class="mt-1 text-[15px] font-semibold text-ink">23 de octubre de 2026</dd>
         </div>
         <div>
           <dt class="text-[12px] font-bold uppercase tracking-[0.1em] text-[#7a889c]">Alcance</dt>
@@ -170,11 +170,27 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
               <tr class="border-b border-[var(--l-200)] align-top">
                 <th scope="row" class="px-3 py-4 text-left">
                   <span class="flex items-start gap-2.5">
+                    <span class="ds-modulo-icono mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--l-100)] text-marca"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /><path d="M2 10h20" /><path d="M6 15h4" /></svg></span>
+                    <span class="font-display text-[14.5px] font-bold leading-snug text-ink">Pagos en línea</span>
+                  </span>
+                </th>
+                <td class="px-3 py-4 text-[13.5px] leading-[1.6] text-[#4f5e74]">Un paso del trámite puede cobrar un monto fijo, y el agente puede sumar un cobro puntual. El vecino paga con Mercado Pago desde su solicitud y el trámite sigue solo cuando el pago se acredita, que el sistema confirma consultando a Mercado Pago. Cada municipio cobra en su propia cuenta y concilia lo cobrado desde la plataforma. Es opcional: sin una cuenta configurada, no se ofrece cobrar.</td>
+                <td class="px-3 py-4 text-[13.5px] leading-[1.6] text-[#42536b]">Vecino (paga) · Agente (cobra) · Supervisor y Auditor (concilian)</td>
+                <td class="px-3 py-4">
+                    <span class="flex flex-wrap gap-1.5">
+                        <code class="rounded border border-[var(--l-200)] bg-[var(--l-50)] px-1.5 py-0.5 font-mono text-[11.5px] text-[#42536b]">ver-pagos</code>
+                        <code class="rounded border border-[var(--l-200)] bg-[var(--l-50)] px-1.5 py-0.5 font-mono text-[11.5px] text-[#42536b]">revisar-pagos</code>
+                    </span>
+                </td>
+              </tr>
+              <tr class="border-b border-[var(--l-200)] align-top">
+                <th scope="row" class="px-3 py-4 text-left">
+                  <span class="flex items-start gap-2.5">
                     <span class="ds-modulo-icono mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--l-100)] text-marca"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="m9 15 2 2 4-4" /></svg></span>
                     <span class="font-display text-[14.5px] font-bold leading-snug text-ink">Formularios versionados</span>
                   </span>
                 </th>
-                <td class="px-3 py-4 text-[13.5px] leading-[1.6] text-[#4f5e74]">El municipio define los campos de cada trámite sin programar. Al publicar una modificación se crea una versión nueva: las solicitudes ya iniciadas conservan el formulario con el que fueron presentadas, tal como exige la validez del acto administrativo.</td>
+                <td class="px-3 py-4 text-[13.5px] leading-[1.6] text-[#4f5e74]">El municipio define los campos de cada trámite sin programar. Cada modificación crea una versión nueva, que rige para las solicitudes que se inicien después: las ya iniciadas conservan el formulario con el que fueron presentadas, tal como exige la validez del acto administrativo.</td>
                 <td class="px-3 py-4 text-[13.5px] leading-[1.6] text-[#42536b]">Administrador · Supervisor</td>
                 <td class="px-3 py-4">
                     <span class="flex flex-wrap gap-1.5">
@@ -364,7 +380,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
       <p class="mt-3 max-w-[760px] text-[15px] leading-[1.6] text-[#4f5e74]">Secuencia operativa de cada rol sobre el sistema. Los pasos describen el circuito completo de un trámite, desde que el vecino lo inicia hasta que queda archivado y auditado.</p>
 
       <div class="mt-8 space-y-7">
-          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6">
+          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6" data-procedimiento="vecino">
             <h3 class="flex items-baseline gap-2.5 font-display text-[18px] font-bold text-ink">
               <span class="text-marca">2.1</span>
               Vecino
@@ -401,11 +417,15 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">8</span>
+                  <span>Si el trámite tiene un paso que cobra, paga desde la misma solicitud con Mercado Pago (escaneando un QR desde la computadora o con un botón desde el celular) y guarda el comprobante. Al acreditarse el pago, el trámite sigue solo.</span>
+                </li>
+                <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
+                  <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">9</span>
                   <span>Al resolverse, descarga el documento emitido. Si lleva QR, cualquiera puede verificar su vigencia escaneándolo.</span>
                 </li>
             </ol>
           </article>
-          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6">
+          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6" data-procedimiento="agente">
             <h3 class="flex items-baseline gap-2.5 font-display text-[18px] font-bold text-ink">
               <span class="text-marca">2.2</span>
               Agente
@@ -434,19 +454,23 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">6</span>
-                  <span>Registra los movimientos que correspondan: verificaciones, notas internas y comunicaciones con el vecino.</span>
+                  <span>Si corresponde un cobro que el trámite no prevé (un sellado, una multa), lo agrega con el monto y el concepto: el vecino lo paga por Mercado Pago y la solicitud espera hasta que el pago se acredite. Mientras no esté pagado, el agente puede anularlo.</span>
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">7</span>
-                  <span>Si el trámite excede su competencia, lo deriva al área correspondiente dejando constancia del movimiento.</span>
+                  <span>Registra los movimientos que correspondan: verificaciones, notas internas y comunicaciones con el vecino.</span>
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">8</span>
+                  <span>Si el trámite excede su competencia, lo deriva al área correspondiente dejando constancia del movimiento.</span>
+                </li>
+                <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
+                  <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">9</span>
                   <span>Finaliza, rechaza o publica la solicitud según el resultado. El vecino recibe el aviso automáticamente.</span>
                 </li>
             </ol>
           </article>
-          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6">
+          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6" data-procedimiento="supervisor">
             <h3 class="flex items-baseline gap-2.5 font-display text-[18px] font-bold text-ink">
               <span class="text-marca">2.3</span>
               Supervisor
@@ -463,7 +487,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">3</span>
-                  <span>Define o ajusta trámites: sus acciones, los estados que producen y el nivel de verificación que exigen.</span>
+                  <span>Define o ajusta trámites: sus acciones, los estados que producen, el nivel de verificación que exigen y qué pasos cobran, y cuánto.</span>
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">4</span>
@@ -483,11 +507,15 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">8</span>
-                  <span>Exporta los informes de gestión del período en PDF o CSV.</span>
+                  <span>Concilia lo cobrado por Mercado Pago en Pagos: cada pago con su número de operación, la comisión, el neto y la fecha en que Mercado Pago libera el dinero. Atiende los avisos —contracargos, reclamos, pagos duplicados o por otro monto— y los marca como revisados.</span>
+                </li>
+                <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
+                  <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">9</span>
+                  <span>Exporta los informes de gestión del período en PDF o CSV, y el listado de pagos en CSV.</span>
                 </li>
             </ol>
           </article>
-          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6">
+          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6" data-procedimiento="administrador">
             <h3 class="flex items-baseline gap-2.5 font-display text-[18px] font-bold text-ink">
               <span class="text-marca">2.4</span>
               Administrador
@@ -520,11 +548,11 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">7</span>
-                  <span>Revisa periódicamente la bitácora de auditoría y los indicadores del sistema.</span>
+                  <span>Revisa periódicamente la bitácora de auditoría, los indicadores del sistema y los avisos de Pagos.</span>
                 </li>
             </ol>
           </article>
-          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6">
+          <article class="ds-seccion rounded-xl border border-[var(--l-200)] p-6" data-procedimiento="auditor">
             <h3 class="flex items-baseline gap-2.5 font-display text-[18px] font-bold text-ink">
               <span class="text-marca">2.5</span>
               Auditor
@@ -549,6 +577,10 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                 </li>
                 <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
                   <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">5</span>
+                  <span>Controla lo cobrado en Pagos: cada pago con su operación de Mercado Pago, su liquidación y su historial en la bitácora. Ve los avisos, pero no puede marcarlos como revisados.</span>
+                </li>
+                <li class="flex gap-3 text-[13.5px] leading-[1.6] text-[#42536b]">
+                  <span class="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--l-100)] font-display text-[11px] font-bold text-marca">6</span>
                   <span>Consulta los indicadores de gestión y exporta el respaldo documental de sus observaciones.</span>
                 </li>
             </ol>
@@ -564,7 +596,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
       <p class="mt-3 max-w-[760px] text-[15px] leading-[1.6] text-[#4f5e74]">Vocabulario completo de permisos del sistema y su asignación a cada rol de base. El municipio puede además componer roles propios con cualquier combinación de estos permisos. Esta tabla se genera directamente desde la definición vigente del sistema.</p>
 
       <p class="mt-4 text-[13px] font-semibold text-[#42536b]">
-        75 permisos en 16 grupos funcionales · 6 roles de base
+        79 permisos en 17 grupos funcionales · 6 roles de base
       </p>
 
       <ul class="mt-4 flex flex-wrap gap-5 text-[13px] text-[#5a6b82]">
@@ -2203,6 +2235,66 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                         <span class="sr-only">El rol no tiene el permiso</span>
                     </td>
                 </tr>
+                <tr data-permiso="exportar-tramites" class="border-b border-[var(--l-200)]">
+                  <th scope="row" class="px-3 py-2.5 text-left font-normal">
+                    <span class="block text-[13.5px] leading-[1.45] text-[#42536b]">Descargar la definición completa de un trámite en YAML</span>
+                    <code class="mt-0.5 block font-mono text-[11px] text-[#8b97a8]">exportar-tramites</code>
+                  </th>
+                    <td data-rol="administrador" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="supervisor" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="agente" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="auditor" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="visualizador" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="vecino" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                </tr>
+                <tr data-permiso="importar-tramites" class="border-b border-[var(--l-200)]">
+                  <th scope="row" class="px-3 py-2.5 text-left font-normal">
+                    <span class="block text-[13.5px] leading-[1.45] text-[#42536b]">Crear o actualizar un trámite desde un archivo YAML</span>
+                    <code class="mt-0.5 block font-mono text-[11px] text-[#8b97a8]">importar-tramites</code>
+                  </th>
+                    <td data-rol="administrador" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="supervisor" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="agente" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="auditor" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="visualizador" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="vecino" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                </tr>
                 <tr data-permiso="asignar-tramites" class="border-b border-[var(--l-200)]">
                   <th scope="row" class="px-3 py-2.5 text-left font-normal">
                     <span class="block text-[13.5px] leading-[1.45] text-[#42536b]">Asignar trámites a usuarios o áreas</span>
@@ -2822,6 +2914,69 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
                     </td>
                 </tr>
               <tr class="bg-[var(--l-100)]">
+                <th scope="colgroup" colspan="7" class="px-3 py-2 text-left font-display text-[12.5px] font-bold uppercase tracking-[0.08em] text-ink">Pagos</th>
+              </tr>
+                <tr data-permiso="ver-pagos" class="border-b border-[var(--l-200)]">
+                  <th scope="row" class="px-3 py-2.5 text-left font-normal">
+                    <span class="block text-[13.5px] leading-[1.45] text-[#42536b]">Ver los pagos recibidos por Mercado Pago y exportarlos</span>
+                    <code class="mt-0.5 block font-mono text-[11px] text-[#8b97a8]">ver-pagos</code>
+                  </th>
+                    <td data-rol="administrador" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="supervisor" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="agente" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="auditor" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="visualizador" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="vecino" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                </tr>
+                <tr data-permiso="revisar-pagos" class="border-b border-[var(--l-200)]">
+                  <th scope="row" class="px-3 py-2.5 text-left font-normal">
+                    <span class="block text-[13.5px] leading-[1.45] text-[#42536b]">Marcar como revisados los avisos de Pagos (contracargos, reclamos, pagos para devolver)</span>
+                    <code class="mt-0.5 block font-mono text-[11px] text-[#8b97a8]">revisar-pagos</code>
+                  </th>
+                    <td data-rol="administrador" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="supervisor" data-permitido="true" class="px-2 py-2.5 text-center">
+                        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-marca text-white"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></span>
+                        <span class="sr-only">El rol tiene el permiso</span>
+                    </td>
+                    <td data-rol="agente" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="auditor" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="visualizador" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                    <td data-rol="vecino" data-permitido="false" class="px-2 py-2.5 text-center">
+                        <span aria-hidden="true" class="text-[var(--l-300)]">—</span>
+                        <span class="sr-only">El rol no tiene el permiso</span>
+                    </td>
+                </tr>
+              <tr class="bg-[var(--l-100)]">
                 <th scope="colgroup" colspan="7" class="px-3 py-2 text-left font-display text-[12.5px] font-bold uppercase tracking-[0.08em] text-ink">Configuración</th>
               </tr>
                 <tr data-permiso="ver-configuracion" class="border-b border-[var(--l-200)]">
@@ -2948,7 +3103,7 @@ submit-guard#disable turbo:submit-end@document->submit-guard#enable">
   </footer>
 
 </div>
-<!-- END app/views/pages/data_sheet.html.erb -->
+<!-- END app/views/paginas/data_sheet.html.erb -->
   
 <p class="mx-auto max-w-[1200px] px-6 pb-10 text-center text-[13px] text-[#8b97a8]"><a class="font-semibold text-marca hover:underline" href="/">← Volver a logiu</a></p>
 <script>
